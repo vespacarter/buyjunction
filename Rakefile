@@ -6,7 +6,3 @@ require File.expand_path('../config/application', __FILE__)
 Rails.application.load_tasks
 
 
-desc "Patata"
-task :pepino, :environment => true do
-  puts User.first.name
-end

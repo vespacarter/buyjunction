@@ -1,0 +1,47 @@
+<h2>Crear venta</h2>
+<%= form_for(@item) do |f| %>
+
+  <div class="field">
+    <%= f.label 'Titulo' %><br />
+    <%= f.text_field :title, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Descripcion' %><br />
+    <%= f.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Vendedor' %><br />
+    <%= f.text_field :seller %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Web del vendedor' %><br />
+    <%= f.url_field :seller_url %>
+  </div> 
+
+  <div class="field">
+    <%= f.label 'Precio' %><br />
+    <%= f.number_field :prize %>
+  </div> 
+
+  <div class="field">
+    <%= f.label 'Cantidad minima' %><br />
+    <%= f.number_field :min_units %>
+  </div> 
+
+  <div class="field">
+    <%= f.label 'Fecha limite' %><br />
+    <%= f.date_field :expiration_date %>
+  </div> 
+
+  <div class="field">
+    <%= f.label 'Hora limite' %><br />
+    <%= f.time_field :expiration_time %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Crear Venta" %>
+  </div>
+<% end %>

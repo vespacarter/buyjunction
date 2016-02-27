@@ -1,0 +1,16 @@
+<h2>Perfil de <%= current_user.username %></h2>
+<p>
+<strong>Email:</strong> <%= current_user.email %>
+<strong>Nombre:</strong> <%= current_user.fullname %>
+<strong>Direccion:</strong> <%= current_user.address %> <%= current_user.city %> <%= current_user.state %> <%= current_user.zipcode %> 
+</p>
+<p><h2>Tus ventas <%= button_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-success btn-sm text-capitalize btn-primary pull-right'%></h2>
+<% @items.each do |item| %>
+	<p><%= link_to( item.title , item_path(item.id)) %></p>
+<% end %>
+</p>
+<p><h2>Tus compras</h2>
+<% @buys.each do |buy| %>
+	<p><%= link_to( buy.title , item_path(buy.id)) %></p>
+<% end %>
+</p>
