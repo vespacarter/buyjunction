@@ -1,3 +1,13 @@
+<% flash.each do |key, value| %>
+   <div class="alert alert-success">
+     <a href="#" data-dismiss="alert" class="close">×</a>
+       <ul class="list-unstyled">
+        <li class="text-center">
+          <%= value %>
+        </li>
+      </ul>
+  </div>
+<% end %>
 <h2>Perfil de <%= current_user.username %></h2>
 <p>
 <strong>Email:</strong> <%= current_user.email %>
