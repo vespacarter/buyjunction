@@ -1,9 +1,10 @@
+<p><%= image_tag @item.avatar.url(:big) %></p>
 <h2><%= @item.title %></h2>
 <p><%= @item.description %></p>
-<p>Vendedor: <a href="<%= @item.seller_url %>"><%= @item.seller %></a></p>
+<p>Vendedor: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></p>
 <p>Precio: <%= @item.prize %>€</p>
 <p>Pedido minimo: <%= @item.min_units %></p>
 <p>Vence el: <%= @item.expiration_date %>
 
-<%= button_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-success btn-sm text-capitalize btn-primary pull-right'%></h2>
+<%= button_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-success btn-sm text-capitalize btn-primary pull-right'%>
 

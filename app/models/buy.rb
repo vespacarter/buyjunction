@@ -12,4 +12,8 @@ class Buy < ActiveRecord::Base
 			return :false
 		end
 	end
+
+	def self.get_by_user_and_item(user,item)
+		results= where(:buyer_id => user).where(:item_id => item).first
+	end
 end
