@@ -7,6 +7,8 @@ class BuysController < ApplicationController
 			buy.buyer_id = current_user.id 
 			buy.item_id = params[:item_id]
 			if buy.save
+				item = Item.find(params[:item_id])
+				item.add_buyer
 				redirect_to profile_path
 			else
 				flash[:alert] = "No se ha podido realizar esta acción"
@@ -22,6 +24,8 @@ class BuysController < ApplicationController
 	def destroy
 		buytodestroy = Buy.get_by_user_and_item(current_user,params[:item_id])
 		buytodestroy.destroy
+		item = Item.find(params[:item_id])
+		item.del_buyer
 		redirect_to profile_path
 	end
 end

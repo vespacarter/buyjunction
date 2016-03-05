@@ -9,4 +9,9 @@ class UsersController < ApplicationController
     	@buys = User.get_active_items(current_user)
     	render 'users/profile'
   	end
+
+  	def list
+
+  	end
+  	
 end

@@ -1,11 +1,12 @@
 class ItemsController < ApplicationController
-	before_action :authenticate_user!
 
 	def new
+		:authenticate_user!
 		@item = Item.new
 	end
 
 	def create	
+		:authenticate_user!
 		item = Item.new(item_params)
 		item.owner = current_user.id
 		if item.save
@@ -19,6 +20,20 @@ class ItemsController < ApplicationController
     	@item = Item.find(params[:id])
     end
 
+    def edit
+    	:authenticate_user!
+    	@item = Item.find(params[:id])
+    end 
+
+    def update
+    	:authenticate_user!
+		item = Item.find(params[:id])
+		if item.update(item_params)
+			redirect_to item_path
+		else
+			render edit_item_path
+		end
+    end
 
 private
 

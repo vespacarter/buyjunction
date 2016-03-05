@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305100048) do
+ActiveRecord::Schema.define(version: 20160305150050) do
 
   create_table "buys", force: :cascade do |t|
     t.integer  "buyer_id"
@@ -28,14 +28,15 @@ ActiveRecord::Schema.define(version: 20160305100048) do
     t.string   "seller_url"
     t.integer  "prize"
     t.integer  "min_units"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.date     "expiration_date"
     t.time     "expiration_time"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "number_of_buyers",    default: 0
   end
 
   create_table "users", force: :cascade do |t|
