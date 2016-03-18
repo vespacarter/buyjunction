@@ -20,7 +20,7 @@
 </div>
 <div class="col-md-8">
 <p><h3>Tus ventas <%= button_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm'%></h3>
-<% @items.each do |item| %>
+<% @user.items.each do |item| %>
 	<p><img class = "round-image-50 img-responsive" src= <%= item.avatar.url(:thumb) %>><%= link_to( item.title , item_path(item.id)) %></p>
 <% end %>
 </p>

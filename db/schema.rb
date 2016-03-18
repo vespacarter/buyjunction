@@ -11,21 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160318173627) do
+ActiveRecord::Schema.define(version: 20160318185659) do
 
   create_table "buys", force: :cascade do |t|
-    t.integer  "buyer_id"
     t.integer  "item_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.boolean  "payment_sent",     default: false
     t.boolean  "payment_received", default: false
+    t.integer  "user_id"
   end
 
   create_table "items", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
-    t.integer  "owner"
     t.string   "seller"
     t.string   "seller_url"
     t.integer  "prize"
@@ -39,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160318173627) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.integer  "number_of_buyers",    default: 0
+    t.integer  "user_id"
   end
 
   create_table "users", force: :cascade do |t|

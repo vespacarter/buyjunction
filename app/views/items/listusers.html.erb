@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<% if @item.owner == current_user.id %>
+<% if @item.user_id == current_user.id %>
 	<ul class="nav nav-pills">
  		<li role="presentation"><a href= <%= item_path %> >Vista</a></li>
   		<li role="presentation"><a href= <%= edit_item_path %> >Editar</a></li>
@@ -21,15 +21,14 @@
 </ul>
 </div>
 <div class="col-md-8">
-<% @users.each do |user| %>
+<% @item.buys.each do |buy| %>
 	<div>
-	<p><img class = "round-image-50" src= <%= user.avatar.url(:thumb) %>> <%= user.username %> 
+	<span><img class = "round-image-50" src= <%= buy.user.avatar.url(:thumb) %>> <%= buy.user.username %></span>
 	<div class="btn-group" role="group" aria-label="...">
   		<button type="button" class="btn btn-default">Pago Enviado</button>
   		<button type="button" class="btn btn-default">Pago Recibido</button>
   		<button type="button" class="btn btn-default">Enviar Mensaje</button>
 	</div>
-  </p>
   </div>
 <% end %>
 </div>

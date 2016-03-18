@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :items
+  has_many :buys
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -10,12 +13,14 @@ class User < ActiveRecord::Base
 
   def self.get_active_items(user)
    	items = []
-   	buys = Buy.get_by_buyer(user)
+   	buys = user.buys
    	buys.each do |buy|
    		items.push(Item.get_by_buy(buy))
    	end
     items
   end
+
+
   def self.get_users_by_id(user_ids)
     users = []
     user_ids.each do |user_id|
