@@ -10,7 +10,7 @@
 <% end %>
 <div class = "row">
 <div class="col-md-4">
-  <%= image_tag current_user.avatar.url(:medium) %>
+  <img class = "round-image-full" src= <%= current_user.avatar.url(:medium) %> >
   <h2><%= current_user.username %><%= button_to 'Editar', edit_user_registration_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm'%></h2>
   <ul>
   <li><strong>Email:</strong> <%= current_user.email %></li>
@@ -21,13 +21,13 @@
 <div class="col-md-8">
 <p><h3>Tus ventas <%= button_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm'%></h3>
 <% @items.each do |item| %>
-	<p><%= image_tag item.avatar.url(:thumb) %><%= link_to( item.title , item_path(item.id)) %></p>
+	<p><img class = "round-image-50 img-responsive" src= <%= item.avatar.url(:thumb) %>><%= link_to( item.title , item_path(item.id)) %></p>
 <% end %>
 </p>
 <p> </p>
 <p><h3>Tus compras</h3>
 <% @buys.each do |buy| %>
-	<p><%= image_tag buy.avatar.url(:thumb) %><%= link_to( buy.title , item_path(buy.id)) %>
+	<p><img class = "round-image-50" src= <%= buy.avatar.url(:thumb) %>><%= link_to( buy.title , item_path(buy.id)) %>
      <%= button_to 'Eliminar', buy_destroy_path, :action => 'destroy', params:{ item_id: buy.id}, :method => 'post', class: 'btn btn-default btn-sm' %>
   </p>
 <% end %>

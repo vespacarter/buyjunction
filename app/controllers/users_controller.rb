@@ -10,8 +10,5 @@ class UsersController < ApplicationController
     	render 'users/profile'
   	end
 
-  	def list
 
-  	end
-  	
 end

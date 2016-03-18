@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
 <% if @item.owner == current_user.id %>
 	<ul class="nav nav-pills">
- 		<li role="presentation" class="active"><a href= <%= item_path %> >Vista</a></li>
+ 		<li role="presentation"><a href= <%= item_path %> >Vista</a></li>
   		<li role="presentation"><a href= <%= edit_item_path %> >Editar</a></li>
-  		<li role="presentation"><a href= <%= userlist_path %> >Gestionar Compradores</a></li>
+  		<li role="presentation" class="active"><a href= <%= userlist_path %> >Gestionar Compradores</a></li>
   		<li role="presentation"><a href="#">Acciones Generales</a></li>
 	</ul>
 <% end %>
@@ -13,7 +13,6 @@
 <p><img class = "img-responsive round-image-full" src =  <%= @item.avatar.url(:big)%> ></p>
 <h2><%= @item.title %></h2>
 <ul>
-<li>Inicia la venta: <%= @owner.username %> </li>
 <li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
 <li>Precio: <%= @item.prize %>€</li>
 <li>Pedido minimo: <%= @item.min_units %></li>
@@ -22,11 +21,15 @@
 </ul>
 </div>
 <div class="col-md-8">
-<% if user_signed_in? %>
-<div><p><%= button_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-success btn-sm text-capitalize btn-primary pull-right'%></p></div>
-<% else %>
-<div><p class = "pull-right">Necesitas iniciar sesión para apuntarte a esta compra</p></div>
+<% @users.each do |user| %>
+	<div>
+	<p><img class = "round-image-50" src= <%= user.avatar.url(:thumb) %>> <%= user.username %> 
+	<div class="btn-group" role="group" aria-label="...">
+  		<button type="button" class="btn btn-default">Pago Enviado</button>
+  		<button type="button" class="btn btn-default">Pago Recibido</button>
+  		<button type="button" class="btn btn-default">Enviar Mensaje</button>
+	</div>
+  </p>
+  </div>
 <% end %>
-<p><%= @item.description %></p>
 </div>
-

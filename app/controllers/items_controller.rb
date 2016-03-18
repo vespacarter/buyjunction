@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
 
     def show
     	@item = Item.find(params[:id])
+    	@owner = User.find(@item.owner)
     end
 
     def edit
@@ -33,6 +34,13 @@ class ItemsController < ApplicationController
 		else
 			render edit_item_path
 		end
+    end
+
+    def listusers
+    	:authenticate_user!
+    	@item = Item.find(params[:id])
+    	user_ids = Buy.get_users_by_item_id(@item.id)
+    	@users = User.get_users_by_id(user_ids)
     end
 
 private

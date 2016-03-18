@@ -8,6 +8,7 @@ font-weight: 400;
 	background-color: #8DBD0C;
 }
 
+
 .logo-text-bold{
 font-family: 'Kanit', sans-serif;
 font-weight: 900;
@@ -36,8 +37,19 @@ vertical-align: text-top;
     border-radius: 25px;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
-    height: 50px;
-    width: 50px;
+
+    width: 100px;
+    overflow: hidden;
+    text-align: center;
+    img { width: 100% }
+}
+
+.round-image-full {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
     overflow: hidden;
     text-align: center;
     img { width: 100% }

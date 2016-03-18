@@ -10,5 +10,5 @@
 <% end %>
 <p><h2>Todas las Compras <!--<%= button_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-success btn-sm text-capitalize btn-primary pull-right'%>--></h2> 
 <% @items.each do |item| %>
-	<p><%= image_tag item.avatar.url(:thumb) %><%= link_to( item.title , item_path(item.id)) %></p>
+	<p><img class = "round-image-50" src= <%= item.avatar.url(:thumb) %> ><%= link_to( item.title , item_path(item.id)) %></p>
 <% end %>

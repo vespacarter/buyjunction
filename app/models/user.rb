@@ -16,4 +16,11 @@ class User < ActiveRecord::Base
    	end
     items
   end
+  def self.get_users_by_id(user_ids)
+    users = []
+    user_ids.each do |user_id|
+      users.push(find(user_id))
+    end
+    users
+  end
 end

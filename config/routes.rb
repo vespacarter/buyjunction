@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'profile', to: 'users#profile'
   post 'buy/destroy', to: 'buys#destroy'
-  post 'users/list', to: 'users#list'
+  get 'users/list/:id', to: 'items#listusers', as: 'userlist'
   resources :items
   resources :buys
  
