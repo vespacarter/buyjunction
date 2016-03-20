@@ -25,5 +25,4 @@ class Item < ActiveRecord::Base
 		self.number_of_buyers -= 1
 		self.update(:number_of_buyers => self.number_of_buyers)
 	end
-
 end

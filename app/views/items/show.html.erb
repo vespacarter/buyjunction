@@ -18,9 +18,13 @@
         </div>
         <div class = "col-md-4">
          <% if user_signed_in? %>
-			<div><p><%= link_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
+         	<%if @item.open_to_apply == true %>
+				<div><p><%= link_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
+			<% else %>
+				<div><p class = "pull-right label label-danger">Venta Cerrada</p></div>
+			<% end %>			
 		<% else %>
-			<div><p class = "pull-right">Necesitas iniciar sesión para apuntarte a esta compra</p></div>
+			<div><p class = "pull-right pull-right label label-danger">Necesitas iniciar sesión para apuntarte a esta compra</p></div>
 		<% end %>
         </div>
       </div>      
@@ -37,6 +41,11 @@
 					<li>Nº de compradores: <%= @item.number_of_buyers %></li>
 					<li>Vence el: <%= @item.expiration_date %></li>
 				</ul>
+				<div class="progress">
+  					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow= "<%= @item.number_of_buyers %>" aria-valuemin="0" aria-valuemax="<%= @item.min_units %>" style="width:80%;">
+  							<%= @item.number_of_buyers %>/<%= @item.min_units %>
+  					</div>
+				</div>
     		</div>
 			<div class="col-md-8">
 				<p class="item-description-text" width="80%"><%= @item.description %></p>

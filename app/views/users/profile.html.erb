@@ -51,13 +51,25 @@
       <table class="table table-striped">
         <% @user.items.each do |item| %>
         <tr>
-          <td width="15%">
+          <td width="10%">
             <img class = "round-image-100 img-responsive" src= <%= item.avatar.url(:thumb) %>>
           </td>
-          <td width="70%">
+          <td width="50%">
             <h4><%= link_to( item.title , item_path(item.id)) %></h4>
+            <% if item.open_to_apply == true %>
+              <span class="label label-default">Aceptando compradores</span>
+            <% end %>
+            <% if item.open_to_pay == true %>
+              <span class="label label-default">Aceptando pagos</span>
+            <% end %>
+            <% if item.open_to_send == true %>
+              <span class="label label-default">Realizando envios</span>
+            <% end %>
+            <% if item.all_sent == true %>
+              <span class="label label-default">Compra Enviada</span>
+            <% end %>                        
           </td>
-          <td width="15%">
+          <td width="40%">
             <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy', params:{ item_id: item.id}, :method => 'delete', class: 'btn btn-default btn-sm pull-right' %>
           </td>
         </tr>
@@ -74,15 +86,30 @@
       <table class="table table-striped">
       <% @buys.each do |item| %>
       <tr>
-        <td width="15%">
+        <td width="10%">
           <img class = "round-image-100" src= <%= item.avatar.url(:thumb) %>>
         </td>
-        <td width="60%">
+        <td width="50%">
           <h4><%= link_to( item.title , item_path(item.id)) %></h4>
+            <% if item.open_to_apply == true %>
+              <span class="label label-default">Aceptando compradores</span>
+            <% end %>
+            <% if item.open_to_pay == true %>
+              <span class="label label-success">Aceptando pagos</span>
+            <% end %>
+            <% if item.open_to_send == true %>
+              <span class="label label-success">Realizando envios</span>
+            <% end %>
+            <% if item.all_sent == true %>
+              <span class="label label-success">Compra Enviada</span>
+            <% end %>       
         </td>
-        <td width="25%">
+        <td width="40%">
         <div class="btn-group pull-right" role="group" aria-label="...">
+        <% if item.open_to_pay == true %>
           <button type="button" class="btn btn-default btn-sm">Enviar Pago</button>
+        <% end %>
+          <button type="button" class="btn btn-default btn-sm">Contactar Vendedor</button>
           <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy',  params:{ item_id: item.id}, :method => 'post', class: 'btn btn-default btn-sm' %>
         </div>
         </td>
