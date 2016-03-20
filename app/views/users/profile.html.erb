@@ -9,28 +9,81 @@
   </div>
 <% end %>
 <div class = "row">
-<div class="col-md-4">
-  <img class = "round-image-full" src= <%= current_user.avatar.url(:medium) %> >
-  <h2><%= current_user.username %><%= button_to 'Editar', edit_user_registration_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm'%></h2>
-  <ul>
-  <li><strong>Email:</strong> <%= current_user.email %></li>
-  <li><strong>Nombre:</strong> <%= current_user.fullname %></li>
-  <li><strong>Direccion:</strong> <%= current_user.address %> <%= current_user.city %> <%= current_user.state %> <%= current_user.zipcode %></li>
-  </ul>
+<div class="col-md-3">
+  <img class = "round-user-avatar-medium" src= <%= current_user.avatar.url(:medium) %> >
+  <p></p>
+  <div class="panel panel-primary">
+    <div class = "panel-heading">
+      <div class = "row">
+        <div class = "col-md-8">
+          <h2 class= "header-title-shadow"><i><%= current_user.username %></i></h2>
+        </div>
+        <div class = "col-md-4">
+         <%= link_to 'Editar', edit_user_registration_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right'%>
+        </div>
+      </div>      
+    </div>
+    <div class = "panel-body">
+      <ul>
+        <li><strong>Email:</strong> <%= current_user.email %></li>
+        <li><strong>Nombre:</strong> <%= current_user.fullname %></li>
+        <li><strong>Direccion:</strong> <%= current_user.address %> <%= current_user.city %> <%= current_user.state %> <%= current_user.zipcode %></li>
+      </ul>
+    </div>
+  </div>
 </div>
-<div class="col-md-8">
-<p><h3>Tus ventas <%= button_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm'%></h3>
-<% @user.items.each do |item| %>
-	<p><img class = "round-image-50 img-responsive" src= <%= item.avatar.url(:thumb) %>><%= link_to( item.title , item_path(item.id)) %></p>
-<% end %>
-</p>
+<div class="col-md-9">
+  <div class="panel panel-primary">
+    <div class = "panel-heading">
+      <div class = "row">
+        <div class = "col-md-10">
+          <h3 class= "header-title-shadow"><i>Tus ventas</i></h3>
+        </div>
+        <div class = "col-md-2">
+          <%= link_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right'%>
+        </div>
+      </div>
+    </div>
+    <div class = "panel-body">
+      <table class="table table-striped">
+        <% @user.items.each do |item| %>
+        <tr>
+          <td width="15%">
+            <img class = "round-image-100 img-responsive" src= <%= item.avatar.url(:thumb) %>>
+          </td>
+          <td width="70%">
+            <h4><%= link_to( item.title , item_path(item.id)) %></h4>
+          </td>
+          <td width="15%">
+            <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy', params:{ item_id: item.id}, :method => 'delete', class: 'btn btn-default btn-sm pull-right' %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 <p> </p>
-<p><h3>Tus compras</h3>
-<% @buys.each do |buy| %>
-	<p><img class = "round-image-50" src= <%= buy.avatar.url(:thumb) %>><%= link_to( buy.title , item_path(buy.id)) %>
-     <%= button_to 'Eliminar', buy_destroy_path, :action => 'destroy', params:{ item_id: buy.id}, :method => 'post', class: 'btn btn-default btn-sm' %>
-  </p>
-<% end %>
-</p>
+  <div class="panel panel-primary">
+    <div class = "panel-heading">
+      <h3 class= "header-title-shadow"><i>Tus compras</i></h3>
+    </div>
+    <div class = "panel-body">
+      <table class="table table-striped">
+      <% @buys.each do |item| %>
+      <tr>
+        <td width="15%">
+          <img class = "round-image-100" src= <%= item.avatar.url(:thumb) %>>
+        </td>
+        <td width="70%">
+          <h4><%= link_to( item.title , item_path(item.id)) %></h4>
+        </td>
+        <td width="15%">
+          <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy',  params:{ item_id: item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right' %>
+        </td>
+      </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
 </div>
 </div>

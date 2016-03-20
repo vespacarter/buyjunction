@@ -1,5 +1,5 @@
 class Buy < ActiveRecord::Base
-	has_many :items
+	belongs_to :item
 	belongs_to :user
 
 #	def self.get_by_buyer(user)
@@ -16,7 +16,7 @@ class Buy < ActiveRecord::Base
 	end
 
 	def self.get_by_user_and_item(user,item)
-		results= where(:buyer_id => user).where(:item_id => item).first
+		where(:user_id => user).where(:item_id => item).first
 	end
 
 	def self.get_users_by_item_id(item_id)

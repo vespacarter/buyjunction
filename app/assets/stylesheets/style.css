@@ -3,12 +3,25 @@ font-family: 'Kanit', sans-serif;
 font-weight: 400;
 }
 
+a:link{
+    color: black;
+}
+a:visited{
+    color: black;
+}
 
 .nav-bar{
 	background-color: #8DBD0C;
 }
 
+.main-content{
+    width: 100%;
+    margin:auto;
+}
 
+.btn {
+    color: black;
+}
 .logo-text-bold{
 font-family: 'Kanit', sans-serif;
 font-weight: 900;
@@ -29,6 +42,7 @@ text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 display: inline;
 max-height: 250%;
 vertical-align: text-top;
+margin-top: -16px;
 }
 
 .round-image-50 {
@@ -37,14 +51,14 @@ vertical-align: text-top;
     border-radius: 25px;
     -moz-border-radius: 25px;
     -webkit-border-radius: 25px;
-
-    width: 100px;
     overflow: hidden;
     text-align: center;
-    img { width: 100% }
+    max-width: 50px;
+    vertical-align: middle;
+    img { width: 100% };
 }
 
-.round-image-full {
+.round-image-100 {
     background-color: white;
     border: 1px solid #d9d9d9;
     border-radius: 25px;
@@ -52,5 +66,59 @@ vertical-align: text-top;
     -webkit-border-radius: 25px;
     overflow: hidden;
     text-align: center;
+    max-width: 100px;
+    vertical-align: middle;
     img { width: 100% }
 }
+
+.round-user-avatar-medium{
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 150px;
+    -moz-border-radius: 150px;
+    -webkit-border-radius: 150px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    img { width: 100% }
+}
+
+.round-item-avatar-big{
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    overflow: hidden;
+    text-align: center;
+    vertical-align: middle;
+    img { width: 100% }    
+}
+.panel-primary{
+    border-color: #8DBD0C;
+}
+
+.panel-primary .panel-heading {
+    background-color: #8DBD0C;
+    border-color: #8DBD0C;
+    padding: 1px 15px;
+}
+
+.header-title-shadow{
+text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;    
+}
+
+.nav-pills li.active a{
+    background-color: #8DBD0C;
+}
+
+.nav-pills li.active a:hover{
+    background-color: #8DBD0C;
+}
+
+.carousel-control.left, .carousel-control.right {
+  background: none !important;
+  filter: progid: none !important;
+  outline: 0;
+ }
+ 

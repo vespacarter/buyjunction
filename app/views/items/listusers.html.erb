@@ -1,16 +1,14 @@
-<% if user_signed_in? %>
-<% if @item.user_id == current_user.id %>
+<% if user_signed_in? && @item.user_id == current_user.id %>
 	<ul class="nav nav-pills">
- 		<li role="presentation"><a href= <%= item_path %> >Vista</a></li>
-  		<li role="presentation"><a href= <%= edit_item_path %> >Editar</a></li>
+ 		<li role="presentation"><%= link_to "Vista", item_path %></li>
+  		<li role="presentation"><%= link_to "Editar", edit_item_path %></li>
   		<li role="presentation" class="active"><a href= <%= userlist_path %> >Gestionar Compradores</a></li>
   		<li role="presentation"><a href="#">Acciones Generales</a></li>
 	</ul>
 <% end %>
-<% end %>
 <div class = "row">
 <div class="col-md-4">
-<p><img class = "img-responsive round-image-full" src =  <%= @item.avatar.url(:big)%> ></p>
+<p><img class = "img-responsive round-image-full" src =  <%= @item.avatar.url(:big)%>></p>
 <h2><%= @item.title %></h2>
 <ul>
 <li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
@@ -21,14 +19,30 @@
 </ul>
 </div>
 <div class="col-md-8">
-<% @item.buys.each do |buy| %>
-	<div>
-	<span><img class = "round-image-50" src= <%= buy.user.avatar.url(:thumb) %>> <%= buy.user.username %></span>
-	<div class="btn-group" role="group" aria-label="...">
-  		<button type="button" class="btn btn-default">Pago Enviado</button>
-  		<button type="button" class="btn btn-default">Pago Recibido</button>
-  		<button type="button" class="btn btn-default">Enviar Mensaje</button>
-	</div>
+
+<div class="panel panel-primary">
+  <div class = "panel-heading">
+    <h3 class= "header-title-shadow"><i>Compradores</i></h3>
   </div>
-<% end %>
+  <div class = "panel-body">
+    <table class="table table-striped">
+      <% @item.buys.each do |buy| %>
+      <tr>
+        <td width="15%">
+          <img class = "round-image-50" src= <%= buy.user.avatar.url(:thumb) %>>
+        </td>
+        <td width="20%">
+          <h4><%= buy.user.username %></h4>
+        </td>
+        <td width="65%">
+          <div class="btn-group pull-right" role="group" aria-label="...">
+            <button type="button" class="btn btn-default">Pago Enviado</button>
+            <button type="button" class="btn btn-default">Pago Recibido</button>
+            <button type="button" class="btn btn-default">Enviar Mensaje</button>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>
