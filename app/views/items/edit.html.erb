@@ -10,54 +10,39 @@
 <% end %>
 <%= form_for(@item) do |f| %>
 
-  <div class="field">
-    <%= f.label 'Titulo' %><br />
-    <%= f.text_field :title, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Descripcion' %><br />
-    <%= f.text_area :description ,size: "100x10" %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Imagen Principal' %><br />
-    <%= image_tag @item.avatar.url(:thumb) %><br />
-    <%= f.file_field :avatar %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label 'Fabricante' %><br />
-    <%= f.text_field :seller %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Web del fabricante' %><br />
-    <%= f.url_field :seller_url %>
-  </div> 
-
-  <div class="field">
-    <%= f.label 'Precio' %><br />
-    <%= f.number_field :prize %>
-  </div> 
-
-  <div class="field">
-    <%= f.label 'Cantidad minima' %><br />
-    <%= f.number_field :min_units %>
-  </div> 
-
-  <div class="field">
-    <%= f.label 'Fecha limite' %><br />
-    <%= f.date_field :expiration_date %>
-  </div> 
-
-  <div class="field">
-    <%= f.label 'Hora limite' %><br />
-    <%= f.time_field :expiration_time %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Actualizar" %>
+<p></p>
+<div class="panel panel-primary">
+    <div class = "panel-heading">
+      <div class = "row">
+        <div class = "col-md-8">
+          <h2 class="item-edit-text"><%= f.text_field :title, autofocus: true %></h2>
+        </div>
+        <div class = "col-md-4">
+         
+        </div>
+      </div>      
+    </div>
+    <div class = "panel-body">
+      <div class = "row">
+      <div class="col-md-4">
+        <%= image_tag @item.avatar.url(:medium) %><br />
+        <%= f.file_field :avatar %>
+        <p>
+        <ul>
+          <li>Inicia la venta: <%= @item.user.username %> </li>
+          <li>Fabricante: <%= f.text_field :seller %></li>
+          <li>Web del fabricante: <%= f.url_field :seller_url %></li>
+          <li>Precio: <%= f.number_field :prize %>€</li>
+          <li>Pedido minimo: <%= f.number_field :min_units %></li>
+          <li>Nº de compradores: <%= @item.number_of_buyers %></li>
+          <li>Vence el: <%= f.date_field :expiration_date %></li>
+          <li>A las: <%= f.time_field :expiration_time %></li>
+        </ul>
+        </p>
+        </div>
+      <div class="col-md-8">
+        <%= f.text_area :description ,size: "100x30" %></p>
+      </div>
+    </div>
   </div>
 <% end %>

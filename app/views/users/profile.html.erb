@@ -10,20 +10,23 @@
 <% end %>
 <div class = "row">
 <div class="col-md-3">
-  <img class = "round-user-avatar-medium" src= <%= current_user.avatar.url(:medium) %> >
-  <p></p>
   <div class="panel panel-primary">
     <div class = "panel-heading">
       <div class = "row">
         <div class = "col-md-8">
-          <h2 class= "header-title-shadow"><i><%= current_user.username %></i></h2>
+          <h2 class= "menu-title"><i><%= current_user.username %></i></h2>
         </div>
         <div class = "col-md-4">
-         <%= link_to 'Editar', edit_user_registration_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right'%>
+         <%= link_to 'Editar', edit_user_registration_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right btn-edit-user'%>
         </div>
       </div>      
     </div>
     <div class = "panel-body">
+    <p>
+    <center>
+      <img class = "round-user-avatar-medium" src= <%= current_user.avatar.url(:medium) %> >
+    </center>
+    </p>
       <ul>
         <li><strong>Email:</strong> <%= current_user.email %></li>
         <li><strong>Nombre:</strong> <%= current_user.fullname %></li>
@@ -37,10 +40,10 @@
     <div class = "panel-heading">
       <div class = "row">
         <div class = "col-md-10">
-          <h3 class= "header-title-shadow"><i>Tus ventas</i></h3>
+          <h3 class= "menu-title"><i>Tus ventas</i></h3>
         </div>
         <div class = "col-md-2">
-          <%= link_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right'%>
+          <%= link_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right btn-new-buy'%>
         </div>
       </div>
     </div>
@@ -65,7 +68,7 @@
 <p> </p>
   <div class="panel panel-primary">
     <div class = "panel-heading">
-      <h3 class= "header-title-shadow"><i>Tus compras</i></h3>
+      <h3 class= "menu-title"><i>Tus compras</i></h3>
     </div>
     <div class = "panel-body">
       <table class="table table-striped">
@@ -74,11 +77,14 @@
         <td width="15%">
           <img class = "round-image-100" src= <%= item.avatar.url(:thumb) %>>
         </td>
-        <td width="70%">
+        <td width="60%">
           <h4><%= link_to( item.title , item_path(item.id)) %></h4>
         </td>
-        <td width="15%">
-          <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy',  params:{ item_id: item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right' %>
+        <td width="25%">
+        <div class="btn-group pull-right" role="group" aria-label="...">
+          <button type="button" class="btn btn-default btn-sm">Enviar Pago</button>
+          <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy',  params:{ item_id: item.id}, :method => 'post', class: 'btn btn-default btn-sm' %>
+        </div>
         </td>
       </tr>
       <% end %>

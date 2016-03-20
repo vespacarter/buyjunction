@@ -22,6 +22,14 @@ a:visited{
 .btn {
     color: black;
 }
+
+.btn-edit-user{
+    margin-top: 20px;
+}
+
+.btn-new-buy{
+    margin-top:15px;
+}
 .logo-text-bold{
 font-family: 'Kanit', sans-serif;
 font-weight: 900;
@@ -74,9 +82,9 @@ margin-top: -16px;
 .round-user-avatar-medium{
     background-color: white;
     border: 1px solid #d9d9d9;
-    border-radius: 150px;
-    -moz-border-radius: 150px;
-    -webkit-border-radius: 150px;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
     overflow: hidden;
     text-align: center;
     vertical-align: middle;
@@ -95,17 +103,21 @@ margin-top: -16px;
     img { width: 100% }    
 }
 .panel-primary{
-    border-color: #8DBD0C;
+    border-color: white;
 }
 
 .panel-primary .panel-heading {
-    background-color: #8DBD0C;
+    background-color: white;
     border-color: #8DBD0C;
     padding: 1px 15px;
 }
 
 .header-title-shadow{
 text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;    
+}
+
+.menu-title{
+color: black;    
 }
 
 .nav-pills li.active a{
@@ -120,5 +132,14 @@ text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   background: none !important;
   filter: progid: none !important;
   outline: 0;
+ }
+
+ .item-description-text{
+    font-size: 1.2em;
+    text-align: justify;
+ }
+
+ .item-edit-text{
+    color:black;
  }
  

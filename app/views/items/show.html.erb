@@ -8,25 +8,39 @@
 	</ul>
 <% end %>
 <% end %>
-<div class = "row">
-<div class="col-md-4">
-<p><img class = "img-responsive round-item-avatar-big" src =  <%= @item.avatar.url(:big)%> ></p>
-<h2><%= @item.title %></h2>
-<ul>
-<li>Inicia la venta: <%= @item.user.username %> </li>
-<li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
-<li>Precio: <%= @item.prize %>€</li>
-<li>Pedido minimo: <%= @item.min_units %></li>
-<li>Nº de compradores: <%= @item.number_of_buyers %></li>
-<li>Vence el: <%= @item.expiration_date %></li>
-</ul>
-</div>
-<div class="col-md-8">
-<% if user_signed_in? %>
-<div><p><%= link_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
-<% else %>
-<div><p class = "pull-right">Necesitas iniciar sesión para apuntarte a esta compra</p></div>
-<% end %>
-<p><%= @item.description %></p>
-</div>
+
+<p></p>
+<div class="panel panel-primary">
+    <div class = "panel-heading">
+      <div class = "row">
+        <div class = "col-md-8">
+          <h2 class= "menu-title"><i><%= @item.title %></i></h2>
+        </div>
+        <div class = "col-md-4">
+         <% if user_signed_in? %>
+			<div><p><%= link_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
+		<% else %>
+			<div><p class = "pull-right">Necesitas iniciar sesión para apuntarte a esta compra</p></div>
+		<% end %>
+        </div>
+      </div>      
+    </div>
+    <div class = "panel-body">
+    	<div class = "row">
+			<div class="col-md-4">
+    			<p><img class = "img-responsive round-item-avatar-big" src =  <%= @item.avatar.url(:big)%> ></p>
+				<ul>
+					<li>Inicia la venta: <%= @item.user.username %> </li>
+					<li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
+					<li>Precio: <%= @item.prize %>€</li>
+					<li>Pedido minimo: <%= @item.min_units %></li>
+					<li>Nº de compradores: <%= @item.number_of_buyers %></li>
+					<li>Vence el: <%= @item.expiration_date %></li>
+				</ul>
+    		</div>
+			<div class="col-md-8">
+				<p class="item-description-text"><%= @item.description %></p>
+			</div>
+		</div>
+	</div>
 
