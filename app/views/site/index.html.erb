@@ -10,6 +10,18 @@
 <% end %>
 <p>
 <div class="row" style="height:200px;">
+    <div class= "col-md-3">
+        <p><img class = "round-image-100" src= <%= @items.first.avatar.url(:medium) %> ></p>
+    </div>
+     <div class= "col-md-3">
+        <p><img class = "round-image-100" src= <%= @items.second.avatar.url(:medium) %> ></p>
+    </div>
+    <div class= "col-md-3">
+        <p><img class = "round-image-100" src= <%= @items.third.avatar.url(:medium) %> ></p>
+    </div>
+    <div class= "col-md-3">
+        <p><img class = "round-image-100" src= <%= @items.fourth.avatar.url(:medium) %> ></p>
+    </div>   
 </div>
 <div class="row" style="height:200px;">
 	<div class= "col-md-6">
@@ -64,6 +76,18 @@
 	</div>	
 </div>
 <div class="row" style="height:200px;">
+   <div class= "col-md-3">
+        <p><img class = "round-image-100" src= <%= @items.first.avatar.url(:medium) %> ></p>
+    </div>
+     <div class= "col-md-3">
+        <p><img class = "round-image-100" src= <%= @items.second.avatar.url(:medium) %> ></p>
+    </div>
+    <div class= "col-md-3">
+        <p><img class = "round-image-100" src= <%= @items.third.avatar.url(:medium) %> ></p>
+    </div>
+    <div class= "col-md-3">
+        <p><img class = "round-image-100" src= <%= @items.fourth.avatar.url(:medium) %> ></p>
+    </div>   
 </div>
 
 <% @items.each do |item| %>
