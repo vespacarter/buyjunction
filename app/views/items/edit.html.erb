@@ -15,7 +15,7 @@
     <div class = "panel-heading">
       <div class = "row">
         <div class = "col-md-8">
-          <h2 class="item-edit-text"><%= f.text_field :title, autofocus: true %></h2>
+          <h2 class="edit-item"><%= f.text_field :title, autofocus: true %></h2>
         </div>
         <div class = "col-md-4">
          
@@ -39,10 +39,14 @@
           <li>A las: <%= f.time_field :expiration_time %></li>
         </ul>
         </p>
+
         </div>
       <div class="col-md-8">
         <%= f.text_area :description ,size: "100x30" %></p>
       </div>
+      <div class="actions">
+        <%= f.submit "Actualizar" %>
+        </div>
     </div>
   </div>
 <% end %>
