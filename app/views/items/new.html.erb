@@ -8,7 +8,7 @@
 
   <div class="field">
     <%= f.label 'Descripcion' %><br />
-    <%= f.text_area :description ,size: "100x10" %>
+    <%= f.text_area :description, as: :wysihtml5, wysihtml5: { locale: "es-ES" },size: "100x10" %>
   </div>
 
   <div class="field">

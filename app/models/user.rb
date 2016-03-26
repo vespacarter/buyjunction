@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :items
   has_many :buys
+  has_many :messages
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

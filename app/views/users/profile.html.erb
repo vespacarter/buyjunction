@@ -1,3 +1,8 @@
+  <ul class="nav nav-pills">
+    <li role="presentation" class="active"><%= link_to "Tus Ventas", profile_path %></li>
+      <li role="presentation"><%= link_to "Tus Compras", user_buys_path%></li>
+      <li role="presentation"><%= link_to "Tus Mensajes", user_messages_path %></li>
+  </ul>
 <% flash.each do |key, value| %>
    <div class="alert alert-info alert-dismissible" role="alert">
        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -77,50 +82,6 @@
           </td>
         </tr>
         <% end %>
-      </table>
-    </div>
-  </div>
-<p> </p>
-  <div class="panel panel-primary">
-    <div class = "panel-heading">
-      <h3 class= "menu-title"><i>Tus compras</i></h3>
-    </div>
-    <div class = "panel-body">
-      <table class="table table-striped">
-      <% @buys.each do |item| %>
-      <tr>
-        <td width="10%">
-          <img class = "round-image-100" src= <%= item.avatar.url(:thumb) %>>
-        </td>
-        <td width="50%">
-          <h4><%= link_to( item.title , item_path(item.id)) %></h4>
-            <% if item.open_to_apply == true %>
-              <span class="label label-default">Aceptando compradores</span>
-            <% end %>
-            <% if item.open_to_pay == true %>
-              <span class="label label-success">Aceptando pagos</span>
-            <% end %>
-            <% if item.open_to_send == true %>
-              <span class="label label-success">Realizando envios</span>
-            <% end %>
-            <% if item.all_sent == true %>
-              <span class="label label-success">Compra Enviada</span>
-            <% end %>
-            <% if item.closed_status == true %>
-              <span class="label label-danger">Venta Cerrada</span>
-            <% end %>       
-        </td>
-        <td width="40%">
-        <div class="btn-group pull-right" role="group" aria-label="...">
-        <% if item.open_to_pay == true %>
-          <button type="button" class="btn btn-default btn-sm">Enviar Pago</button>
-        <% end %>
-          <button type="button" class="btn btn-default btn-sm">Contactar Vendedor</button>
-          <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy',  params:{ item_id: item.id}, :method => 'post', class: 'btn btn-default btn-sm' %>
-        </div>
-        </td>
-      </tr>
-      <% end %>
       </table>
     </div>
   </div>

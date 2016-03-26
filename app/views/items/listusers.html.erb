@@ -51,11 +51,23 @@
                   </td>
                   <td width="20%">
                     <h4><%= buy.user.username %></h4>
+                    <% if buy.payment_sent == true %>
+                      <span class="label label-success">Pago Enviado</span>
+                    <% end %>
+                    <% if buy.payment_received == true %>
+                      <span class="label label-success">Pago Recibido</span>
+                    <% end %>
+                    <% if buy.item_sent == true %>
+                      <span class="label label-success">Articulo Enviado</span>
+                    <% end %>
+                    <% if buy.item_received == true %>
+                      <span class="label label-success">Articulo Recibido</span>
+                    <% end %>
                   </td>
                   <td width="65%">
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                      <button type="button" class="btn btn-default">Pago Enviado</button>
                       <button type="button" class="btn btn-default">Pago Recibido</button>
+                      <button type="button" class="btn btn-default">Item Enviado</button>
                       <button type="button" class="btn btn-default">Enviar Mensaje</button>
                     </div>
                   </td>

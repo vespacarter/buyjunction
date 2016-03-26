@@ -9,7 +9,7 @@ class BuysController < ApplicationController
 			if buy.save
 				item = Item.find(params[:item_id])
 				item.add_buyer
-				redirect_to profile_path
+				redirect_to buys_path
 			else
 				flash[:alert] = "No se ha podido realizar esta acción"
 				redirect_to profile_path

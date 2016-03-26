@@ -1,0 +1,102 @@
+  <ul class="nav nav-pills">
+    <li role="presentation"><%= link_to "Tus Ventas", profile_path %></li>
+      <li role="presentation"  class="active"><%= link_to "Tus Compras", user_buys_path%></li>
+      <li role="presentation"><%= link_to "Tus Mensajes", user_messages_path %></li>
+  </ul>
+<% flash.each do |key, value| %>
+   <div class="alert alert-info alert-dismissible" role="alert">
+       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <ul class="list-unstyled">
+        <li class="text-center">
+          <%= value %>
+        </li>
+      </ul>
+  </div>
+<% end %>
+<div class = "row">
+<div class="col-md-3">
+  <div class="panel panel-primary">
+    <div class = "panel-heading">
+      <div class = "row">
+        <div class = "col-md-8">
+          <h2 class= "menu-title"><i><%= current_user.username %></i></h2>
+        </div>
+        <div class = "col-md-4">
+         <%= link_to 'Editar', edit_user_registration_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right btn-edit-user'%>
+        </div>
+      </div>      
+    </div>
+    <div class = "panel-body">
+    <p>
+    <center>
+      <img class = "round-user-avatar-medium" src= <%= current_user.avatar.url(:medium) %> >
+    </center>
+    </p>
+      <ul>
+        <li><strong>Email:</strong> <%= current_user.email %></li>
+        <li><strong>Nombre:</strong> <%= current_user.fullname %></li>
+        <li><strong>Direccion:</strong> <%= current_user.address %> <%= current_user.city %> <%= current_user.state %> <%= current_user.zipcode %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="col-md-9">
+  <div class="panel panel-primary">
+    <div class = "panel-heading">
+      <h3 class= "menu-title"><i>Tus compras</i></h3>
+    </div>
+    <div class = "panel-body">
+      <table class="table table-striped">
+      <% @user.buys.each do |buy| %>
+      <tr>
+        <td width="10%">
+          <img class = "round-image-100" src= <%= buy.item.avatar.url(:thumb) %>>
+        </td>
+        <td width="50%">
+          <h4><%= link_to( buy.item.title , item_path(buy.item.id)) %></h4>
+            <% if buy.item.open_to_apply == true %>
+              <span class="label label-default">Aceptando compradores</span>
+            <% end %>
+            <% if buy.item.open_to_pay == true %>
+              <span class="label label-success">Aceptando pagos</span>
+              <% if buy.payment_sent == true %>
+                <span class="label label-success">Pago Enviado</span>
+              <% end %>
+                <% if buy.payment_received == true %>
+                <span class="label label-success">Pago Recibido</span>
+              <% end %>
+            <% end %>
+            <% if buy.item.open_to_send == true %>
+              <span class="label label-success">Realizando envios</span>
+              <% if buy.item_sent == true %>
+                <span class="label label-success">Articulo Enviado</span>
+              <% end %>
+              <% if buy.item_received == true %>
+                <span class="label label-success">Articulo Recibido</span>
+              <% end %>
+            <% end %>
+            <% if buy.item.all_sent == true %>
+              <span class="label label-success">Compra Enviada</span>
+            <% end %>
+            <% if buy.item.closed_status == true %>
+              <span class="label label-danger">Venta Cerrada</span>
+            <% end %>    
+        </td>
+        <td width="40%">
+        <div class="btn-group pull-right" role="group" aria-label="...">
+        <% if buy.item.open_to_pay == true %>
+          <button type="button" class="btn btn-default btn-sm payment-btn" id= buy.id >Enviar Pago</button>
+          <script>('.payment-btn #buy.id').on('click', sendInfoToApi(0,buy.id))</script>
+        <% end %>
+          <%= button_to 'Contactar Vendedor', create_message_path, :action => 'generate', params:{from: current_user.id, user_id: buy.item.user_id, subject: buy.item.title}, :method => 'post', class: 'btn btn-default btn-sm' %>
+
+          <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy',  params:{ item_id: buy.item.id}, :method => 'post', class: 'btn btn-default btn-sm' %>
+        </div>
+        </td>
+      </tr>
+      <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+</div>

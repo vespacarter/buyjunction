@@ -1,4 +1,4 @@
-<% if user_signed_in? %>
+	<% if user_signed_in? %>
 <% if @item.user_id == current_user.id %>
 	<ul class="nav nav-pills">
  		<li role="presentation" class="active"><a href= <%= item_path %> >Vista</a></li>
@@ -19,7 +19,7 @@
         <div class = "col-md-4">
          <% if user_signed_in? %>
          	<%if @item.open_to_apply == true %>
-				<div><p><%= link_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
+				<div><p><%= button_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
 			<% else %>
 				<div><p class = "pull-right label label-danger">Venta Cerrada</p></div>
 			<% end %>			

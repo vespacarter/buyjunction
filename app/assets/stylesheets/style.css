@@ -143,3 +143,11 @@ color: black;
     color:black;
  }
  
+ .form-textarea{
+
+    width: 80%;
+ }
+
+ .unread_message{
+    font-weight: bold;
+ }
