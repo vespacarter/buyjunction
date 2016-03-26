@@ -27,4 +27,13 @@ class Buy < ActiveRecord::Base
 		end
 		users
 	end
+
+	def self.destroy_by_item(item)
+		buys = item.buys
+		buys.each do |buy|
+			buy.destroy
+		end
+	end
+
+	
 end

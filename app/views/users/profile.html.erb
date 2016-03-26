@@ -78,7 +78,7 @@
             <% end %>                          
           </td>
           <td width="40%">
-            <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy', params:{ item_id: item.id}, :method => 'delete', class: 'btn btn-default btn-sm pull-right' %>
+            <%= button_to 'Eliminar', item_path(item.id), :method => 'delete', class: 'btn btn-default btn-sm pull-right' %>
           </td>
         </tr>
         <% end %>
