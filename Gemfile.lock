@@ -43,9 +43,6 @@ GEM
     builder (3.2.2)
     byebug (8.2.2)
     chronic (0.10.2)
-    ckeditor (4.1.6)
-      cocaine
-      orm_adapter (~> 0.5.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.8)
@@ -182,7 +179,6 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  ckeditor
   coffee-rails (~> 4.1.0)
   devise
   jbuilder (~> 2.0)
