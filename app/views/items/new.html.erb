@@ -6,6 +6,11 @@
     <%= f.text_field :title, autofocus: true %>
   </div>
 
+    <div class="field">
+    <%= f.label 'Categoria' %><br />
+    <%= f.select :category, [['Informática y Tecnología','Informática y Tecnología'],['Coches y Motos','Coches y Motos'],['Deporte y Tiempo Libre','Deporte y Tiempo Libre'],['Muebles y Cosas de Casa','Muebles y Cosas de Casa'],['Consolas y Videojuegos','Consolas y Videojuegos'],['Música, Libros, Películas','Música, Libros, Películas'],['Moda y Complementos','Moda y Complementos'],['Niños, Bebés y Juguetes','Niños, Bebés y Juguetes'],['Electrodomesticos','Electrodomesticos'],['Otros','Otros']] %>
+  </div>
+
   <div class="field">
     <%= f.label 'Descripcion' %><br />
     <%= f.text_area :description, size: "100x10" %>

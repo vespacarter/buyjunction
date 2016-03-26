@@ -34,6 +34,7 @@
 			<div class="col-md-4">
     			<p><img class = "img-responsive round-item-avatar-big" src =  <%= @item.avatar.url(:big)%> ></p>
 				<ul>
+				    <li>En: <i><%= @item.category %></i></li>	
 					<li>Inicia la venta: <%= @item.user.username %> </li>
 					<li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
 					<li>Precio: <%= @item.prize %>€</li>

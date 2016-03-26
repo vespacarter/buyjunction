@@ -29,6 +29,7 @@
         <%= f.file_field :avatar %>
         <p>
         <ul>
+          <li>En: <%= f.select :category, [['Informática y Tecnología','Informática y Tecnología'],['Coches y Motos','Coches y Motos'],['Deporte y Tiempo Libre','Deporte y Tiempo Libre'],['Muebles y Cosas de Casa','Muebles y Cosas de Casa'],['Consolas y Videojuegos','Consolas y Videojuegos'],['Música, Libros, Películas','Música, Libros, Películas'],['Moda y Complementos','Moda y Complementos'],['Niños, Bebés y Juguetes','Niños, Bebés y Juguetes'],['Electrodomesticos','Electrodomesticos'],['Otros','Otros']] %></li>
           <li>Inicia la venta: <%= @item.user.username %> </li>
           <li>Fabricante: <%= f.text_field :seller %></li>
           <li>Web del fabricante: <%= f.url_field :seller_url %></li>

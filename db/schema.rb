@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325101217) do
+ActiveRecord::Schema.define(version: 20160326162921) do
 
   create_table "buys", force: :cascade do |t|
     t.integer  "item_id"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160325101217) do
     t.boolean  "open_to_send",        default: false
     t.boolean  "all_sent",            default: false
     t.boolean  "closed_status",       default: false
+    t.string   "category"
   end
 
   create_table "messages", force: :cascade do |t|
