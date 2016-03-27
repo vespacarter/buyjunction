@@ -1,8 +1,4 @@
-  <ul class="nav nav-pills">
-    <li role="presentation" class="active"><%= link_to "Tus Ventas", profile_path %></li>
-      <li role="presentation"><%= link_to "Tus Compras", user_buys_path%></li>
-      <li role="presentation"><%= link_to "Tus Mensajes", user_messages_path %></li>
-  </ul>
+<%= render "usermenu", :locals => {:option => 0 }%>
 <% flash.each do |key, value| %>
    <div class="alert alert-info alert-dismissible" role="alert">
        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -15,30 +11,7 @@
 <% end %>
 <div class = "row">
 <div class="col-md-3">
-  <div class="panel panel-primary">
-    <div class = "panel-heading">
-      <div class = "row">
-        <div class = "col-md-8">
-          <h2 class= "menu-title"><i><%= current_user.username %></i></h2>
-        </div>
-        <div class = "col-md-4">
-         <%= link_to 'Editar', edit_user_registration_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right btn-edit-user'%>
-        </div>
-      </div>      
-    </div>
-    <div class = "panel-body">
-    <p>
-    <center>
-      <img class = "round-user-avatar-medium" src= <%= current_user.avatar.url(:medium) %> >
-    </center>
-    </p>
-      <ul>
-        <li><strong>Email:</strong> <%= current_user.email %></li>
-        <li><strong>Nombre:</strong> <%= current_user.fullname %></li>
-        <li><strong>Direccion:</strong> <%= current_user.address %> <%= current_user.city %> <%= current_user.state %> <%= current_user.zipcode %></li>
-      </ul>
-    </div>
-  </div>
+  <%=render "userprofile" %>
 </div>
 <div class="col-md-9">
   <div class="panel panel-primary">

@@ -29,4 +29,15 @@ class User < ActiveRecord::Base
     end
     users
   end
+
+
+  def self.get_unread_messages(user)
+    unread = 0
+    user.messages.each do |message|
+      if message.unread == true
+          unread =+1
+      end
+    end
+    unread
+  end
 end

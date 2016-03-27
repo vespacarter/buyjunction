@@ -53,8 +53,10 @@
       Mensaje:<br>
     <%= @message.body.html_safe %>
     </p>
+    <div class="btn-group pull-right" role="group" aria-label="...">
     <%= button_to 'Responder', create_message_path, :action => 'generate', params:{from: current_user.id, user_id: @message.from, subject: "Re: " + @message.subject}, :method => 'post', class: 'btn btn-default btn-sm' %>
      <%= button_to 'Borrar', message_path(@message.id), :method => 'delete', class: 'btn btn-default btn-sm'%>
+     </div>
     </div>
   </div>
 </div>

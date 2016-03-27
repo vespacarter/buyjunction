@@ -1,13 +1,6 @@
 <% if user_signed_in? && @item.user_id == current_user.id %>
-	<ul class="nav nav-pills">
- 		<li role="presentation"><%= link_to "Vista", item_path %></li>
-  		<li role="presentation"><%= link_to "Editar", edit_item_path %></li>
-  		<li role="presentation" class="active"><a href= <%= userlist_path %> >Gestionar Compradores</a></li>
-  		<li role="presentation"><a href="#">Acciones Generales</a></li>
-	</ul>
+  <%= render "itemmenu", :locals => {:option => 2 }%>
 <% end %>
-
-
 <p></p>
 <div class="panel panel-primary">
     <div class = "panel-heading">
@@ -26,16 +19,8 @@
     </div>
     <div class = "panel-body">
       <div class = "row">
-      <div class="col-md-4">
-          <p><img class = "img-responsive round-item-avatar-big" src =  <%= @item.avatar.url(:big)%> ></p>
-        <ul>
-          <li>Inicia la venta: <%= @item.user.username %> </li>
-          <li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
-          <li>Precio: <%= @item.prize %>€</li>
-          <li>Pedido minimo: <%= @item.min_units %></li>
-          <li>Nº de compradores: <%= @item.number_of_buyers %></li>
-          <li>Vence el: <%= @item.expiration_date %></li>
-        </ul>
+        <div class="col-md-4">
+          <%= render "itemprofile" %>
         </div>
       <div class="col-md-8">
         <div class="panel panel-primary">

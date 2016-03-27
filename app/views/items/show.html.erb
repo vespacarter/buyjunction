@@ -1,11 +1,6 @@
 	<% if user_signed_in? %>
 <% if @item.user_id == current_user.id %>
-	<ul class="nav nav-pills">
- 		<li role="presentation" class="active"><a href= <%= item_path %> >Vista</a></li>
-  		<li role="presentation"><a href= <%= edit_item_path %> >Editar</a></li>
-  		<li role="presentation"><a href= <%= userlist_path %> >Gestionar Compradores</a></li>
-  		<li role="presentation"><a href="#">Acciones Generales</a></li>
-	</ul>
+	<%= render "itemmenu", :locals => {:option => 0 }%>
 <% end %>
 <% end %>
 
@@ -32,21 +27,7 @@
     <div class = "panel-body">
     	<div class = "row">
 			<div class="col-md-4">
-    			<p><img class = "img-responsive round-item-avatar-big" src =  <%= @item.avatar.url(:big)%> ></p>
-				<ul>
-				    <li>En: <i><%= @item.category %></i></li>	
-					<li>Inicia la venta: <%= @item.user.username %> </li>
-					<li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
-					<li>Precio: <%= @item.prize %>€</li>
-					<li>Pedido minimo: <%= @item.min_units %></li>
-					<li>Nº de compradores: <%= @item.number_of_buyers %></li>
-					<li>Vence el: <%= @item.expiration_date %></li>
-				</ul>
-				<div class="progress">
-  					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow= "<%= @item.number_of_buyers %>" aria-valuemin="0" aria-valuemax="<%= @item.min_units %>" style="width:80%;">
-  							<%= @item.number_of_buyers %>/<%= @item.min_units %>
-  					</div>
-				</div>
+			<%= render "itemprofile" %>
     		</div>
 			<div class="col-md-8">
 				<p class="item-description-text" width="80%"><%= @item.description.html_safe %></p>

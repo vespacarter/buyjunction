@@ -1,11 +1,7 @@
 <% if user_signed_in? %>
 <% if @item.user_id == current_user.id %>
 	<ul class="nav nav-pills">
- 		<li role="presentation"><a href= <%= item_path %> >Vista</a></li>
-  		<li role="presentation" class="active"><a href= <%= edit_item_path %> >Editar</a></li>
-  		<li role="presentation"><a href= <%= userlist_path %> >Gestionar Compradores</a></li>
-  		<li role="presentation"><a href="#">Acciones Generales</a></li>
-	</ul>
+  <%= render "itemmenu", :locals => {:option => 1 }%>
 <% end %>
 <% end %>
 <%= form_for(@item) do |f| %>

@@ -1,0 +1,5 @@
+<ul class="nav nav-pills">
+	<li role="presentation"<%if locals[:option] == 0%>class="active"<%end%> ><%= link_to "Tus Ventas", profile_path %></li>
+    <li role="presentation"<%if locals[:option] == 1%>class="active"<%end%> ><%= link_to "Tus Compras", user_buys_path%></li>
+    <li role="presentation"<%if locals[:option] == 2%>class="active"<%end%> ><%= link_to "Tus Mensajes", user_messages_path %></li>
+</ul>

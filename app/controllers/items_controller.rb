@@ -43,7 +43,7 @@ class ItemsController < ApplicationController
     def destroy
         :authenticate_user!
         itemtodestroy = Item.find(params[:id])
-        Buy.destroy_by_item(itemtodestroy)
+        Buy.destroy_by_item(itemtodestroy)  
         itemtodestroy.destroy
         redirect_to profile_path
     end
