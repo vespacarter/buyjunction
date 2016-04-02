@@ -21,11 +21,11 @@ class BuysController < ApplicationController
 	end
 
 	def destroy
-		buytodestroy = Buy.get_by_user_and_item(current_user.id,params[:item_id])
+		buytodestroy = Buy.find(params[:id])
+		item = buytodestroy.item
 		buytodestroy.destroy
-		item = Item.find(params[:item_id])
 		item.del_buyer
-		redirect_to profile_path
+		redirect_to buys_path
 	end
 
 end

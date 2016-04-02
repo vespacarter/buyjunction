@@ -11,7 +11,7 @@
         <div class = "col-md-4">
          <% if user_signed_in? %>
           <% if @item.open_to_apply == true %>
-            <div><p><%= link_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
+            <div><p><%= button_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
           <% else %>
             <div><p class = "pull-right label label-danger">Compra Cerrada</p></div>
           <% end %>
@@ -34,11 +34,33 @@
           <div class = "panel-body">
             <table class="table table-striped">
               <% @item.buys.each do |buy| %>
-                <tr>
+                <tr id= <%= buy.id %>>
                   <td width="10%">
                     <img class = "round-image-50" src= <%= buy.user.avatar.url(:thumb) %>>
+                                    <!-- Modal -->
+                <div class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><img class = "round-image-50" src= <%= buy.user.avatar.url(:thumb) %>> <%= buy.user.username %></h4>
+                      </div>
+                      <div class="modal-body">
+                        <ul>
+                          <li><strong>Email:</strong> <%= buy.user.email %></li>
+                          <li><strong>Nombre:</strong> <%= buy.user.fullname %></li>
+                          <li><strong>Direccion:</strong> <%= buy.user.address %> - <%= buy.user.city %> <br>(<%= buy.user.state %>) CP <%= buy.user.zipcode %></li>
+                        </ul>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Fin Modal -->
                   </td>
-                  <td width="50%" id= <%= buy.id %>>
+                  <td width="50%">
                     <h4><%= buy.user.username %></h4>
                     <% if buy.item.open_to_pay == true %>
                       <span class="label label-success">Aceptando pagos</span>
@@ -65,6 +87,7 @@
                         <a href="#" class="btn btn-default btn-sm payment-confirm-btn" id= <%= buy.id %> >Pago Recibido</a>
                       <% end %>
                       <% if buy.item.open_to_send == true %>
+                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#<%= buy.id %> .modal" >Datos de Envio</button>  
                         <a href="#" class="btn btn-default btn-sm item-sent-btn" id= <%= buy.id %> >Articulo Enviado</a>
                       <% end %>
                       <%= link_to 'Contactar', new_message_path(from: current_user.id, user_id: buy.user_id, subject: buy.item.title), class: 'btn btn-default btn-sm' %>
