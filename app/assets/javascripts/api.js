@@ -1,22 +1,67 @@
-function sendInfoToApi(event,action,data) {
-  event.preventDefault()
-  var data = {
-  // Build a new character from the values in the form
-    action: action ,
-    data: data ,
-  };
-  var request = $.post('/api/main', data)
-  request.fail(showError);
-  request.done();
 
-  $formAlerts.empty()
+$(document).ready(function(){
+  $(".payment-send-btn").click(function(event){
+    event.preventDefault();
+    var buyToSendId = $(this).attr("id");
+    var url = "/api/v1/buys/" + buyToSendId + "/setpayment";
+    var request = $.get(url);
+    function onSuccess(){
+      $("#" + buyToSendId + " .payment-sent").toggleClass("hidden");
+      console.debug('Payment Set!');
+    }
+    function onFailure(){
+      console.debug('Payment Setting Error!');
+    }
+    request.done(onSuccess);
+    request.fail(onFailure);
+  });
 
-  function showError (error) {
-    console.error('Error processing request.', '\n' + error.responseText);
-  }
+  $(".payment-confirm-btn").click(function(event){
+    event.preventDefault();
+    var buyToSendId = $(this).attr("id");
+    var url = "/api/v1/buys/" + buyToSendId + "/paymentconfirm";
+    var request = $.get(url);
+    function onSuccess(){
+      $("#" + buyToSendId + " .payment-received").toggleClass("hidden");
+      console.debug('Payment Confirmed!');
+    }
+    function onFailure(){
+      console.debug('Payment Confirm Error!');
+    }
+    request.done(onSuccess);
+    request.fail(onFailure);
+  });
 
-}
+  $(".item-sent-btn").click(function(event){
+    event.preventDefault();
+    var buyToSendId = $(this).attr("id");
+    var url = "/api/v1/buys/" + buyToSendId + "/setitem";
+    var request = $.get(url);
+    function onSuccess(){
+      $("#" + buyToSendId + " .item-sent").toggleClass("hidden");
+      console.debug('Item Set!');
+    }
+    function onFailure(){
+      console.debug('Item Set Error!');
+    }
+    request.done(onSuccess);
+    request.fail(onFailure);
+  });
 
+  $(".item-confirm-btn").click(function(event){
+    event.preventDefault();
+    var buyToSendId = $(this).attr("id");
+    var url = "/api/v1/buys/" + buyToSendId + "/itemconfirm";
+    var request = $.get(url);
+    function onSuccess(){
+      $("#" + buyToSendId + " .item-received").toggleClass("hidden");
+      console.debug('Item Confirmed!');
+    }
+    function onFailure(){
+      console.debug('Item Confirm Error!');
+    }
+    request.done(onSuccess);
+    request.fail(onFailure);
+  });
 
-
-//  $('[data-hook~=tourney-add]').on('click', sendInfoToApi(action,data)) //
+});

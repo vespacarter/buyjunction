@@ -1,14 +1,4 @@
 <%= render "usermenu", :locals => {:option => 2 }%>
-<% flash.each do |key, value| %>
-   <div class="alert alert-info alert-dismissible" role="alert">
-       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       <ul class="list-unstyled">
-        <li class="text-center">
-          <%= value %>
-        </li>
-      </ul>
-  </div>
-<% end %>
 <div class = "row">
 <div class="col-md-3">
   <%=render "userprofile" %>
@@ -21,7 +11,7 @@
     <div class = "panel-body">
       <table class="table table-striped">
       <th width = "20%">Recibido</th>
-      <th width = "70%">Asunto</th>
+      <th width = "60%">Asunto</th>
       <th></th>
       <% @user.messages.each do |message| %>
       <tr>
@@ -45,8 +35,8 @@
         </td>
         <td>
         <div class="btn-group pull-right" role="group" aria-label="...">
-        	<%= button_to 'Leer', message_path(message.id), :method => 'get', class: 'btn btn-default btn-sm' %>
-        	<%= button_to 'Borrar', message_path(message.id), :method => 'delete', class: 'btn btn-default btn-sm'%>
+        	<%= link_to 'Leer', message_path(message.id), class: 'btn btn-default btn-sm' %>
+        	<%= link_to 'Borrar', message_path(message.id), :method => 'delete', class: 'btn btn-default btn-sm'%>
         </div>
         </td>
       </tr>

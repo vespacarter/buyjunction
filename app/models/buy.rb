@@ -35,5 +35,41 @@ class Buy < ActiveRecord::Base
 		end
 	end
 
+	def set_payment
+		self.toggle(:payment_sent)
+	end
+
+	def paymentconfirm
+		self.toggle(:payment_received)
+	end
+
+	def check_confirmed_payments
+		if ((self.item.buys.where(payment_received: true).count) == (self.item.buys.count))
+		 	self.item.open_to_send = true
+		 	self.item.open_to_pay = false
+		else
+		 	self.item.open_to_send = false
+		 	self.item.open_to_pay = true
+		end
+		self.item.save
+	end
+
+	def set_item
+		self.toggle(:item_sent)
+	end
+
+	def itemconfirm
+		self.toggle(:item_received)
+	end
 	
+	def check_confirmed_items
+		if ((self.item.buys.where(item_received: true).count) == (self.item.buys.count))
+		 	self.item.open_to_send = false
+		 	self.item.all_sent = true
+		else
+		 	self.item.open_to_send = true
+		 	self.item.all_sent = false
+		end
+		self.item.save
+	end
 end

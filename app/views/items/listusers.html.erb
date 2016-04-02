@@ -10,7 +10,11 @@
         </div>
         <div class = "col-md-4">
          <% if user_signed_in? %>
-      <div><p><%= link_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
+          <% if @item.open_to_apply == true %>
+            <div><p><%= link_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
+          <% else %>
+            <div><p class = "pull-right label label-danger">Compra Cerrada</p></div>
+          <% end %>
     <% else %>
       <div><p class = "pull-right">Necesitas iniciar sesión para apuntarte a esta compra</p></div>
     <% end %>
@@ -31,29 +35,39 @@
             <table class="table table-striped">
               <% @item.buys.each do |buy| %>
                 <tr>
-                  <td width="15%">
+                  <td width="10%">
                     <img class = "round-image-50" src= <%= buy.user.avatar.url(:thumb) %>>
                   </td>
-                  <td width="20%">
+                  <td width="50%" id= <%= buy.id %>>
                     <h4><%= buy.user.username %></h4>
-                    <% if buy.payment_sent == true %>
-                      <span class="label label-success">Pago Enviado</span>
+                    <% if buy.item.open_to_pay == true %>
+                      <span class="label label-success">Aceptando pagos</span>
+                      <span class="label label-success payment-received <% if buy.payment_received == false %> hidden <% end %>">Pago Recibido</span>
+                      <% if buy.payment_sent == true %>
+                        <span class="label label-success">Pago Enviado</span>
+                      <% end %>
                     <% end %>
-                    <% if buy.payment_received == true %>
-                      <span class="label label-success">Pago Recibido</span>
+                    <% if buy.item.open_to_send == true %>
+                      <span class="label label-success">Aceptando envios</span>
+                      <span class="label label-success item-sent <% if buy.item_sent == false %> hidden <% end %>">Articulo Enviado</span>
+                      <% if buy.item_received == true %>
+                        <span class="label label-success">Articulo Recibido</span>
+                      <% end %>
                     <% end %>
-                    <% if buy.item_sent == true %>
-                      <span class="label label-success">Articulo Enviado</span>
+                    <% if buy.item.all_sent == true %>
+                      <span class="label label-success">Compra Enviada</span>
                     <% end %>
-                    <% if buy.item_received == true %>
-                      <span class="label label-success">Articulo Recibido</span>
-                    <% end %>
+
                   </td>
-                  <td width="65%">
+                  <td width="40%">
                     <div class="btn-group pull-right" role="group" aria-label="...">
-                      <button type="button" class="btn btn-default">Pago Recibido</button>
-                      <button type="button" class="btn btn-default">Item Enviado</button>
-                      <button type="button" class="btn btn-default">Enviar Mensaje</button>
+                      <% if buy.item.open_to_pay == true %>
+                        <a href="#" class="btn btn-default btn-sm payment-confirm-btn" id= <%= buy.id %> >Pago Recibido</a>
+                      <% end %>
+                      <% if buy.item.open_to_send == true %>
+                        <a href="#" class="btn btn-default btn-sm item-sent-btn" id= <%= buy.id %> >Articulo Enviado</a>
+                      <% end %>
+                      <%= link_to 'Contactar', new_message_path(from: current_user.id, user_id: buy.user_id, subject: buy.item.title), class: 'btn btn-default btn-sm' %>
                     </div>
                   </td>
                 </tr>

@@ -20,7 +20,6 @@ class BuysController < ApplicationController
 		end	
 	end
 
-
 	def destroy
 		buytodestroy = Buy.get_by_user_and_item(current_user.id,params[:item_id])
 		buytodestroy.destroy

@@ -31,9 +31,10 @@ class User < ActiveRecord::Base
   end
 
 
-  def self.get_unread_messages(user)
+  def unread_messages
+    #mirar select count
     unread = 0
-    user.messages.each do |message|
+    messages.each do |message|
       if message.unread == true
           unread =+1
       end

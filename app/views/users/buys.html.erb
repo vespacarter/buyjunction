@@ -1,14 +1,4 @@
 <%= render "usermenu", :locals => {:option => 1 }%>
-<% flash.each do |key, value| %>
-   <div class="alert alert-info alert-dismissible" role="alert">
-       <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       <ul class="list-unstyled">
-        <li class="text-center">
-          <%= value %>
-        </li>
-      </ul>
-  </div>
-<% end %>
 <div class = "row">
 <div class="col-md-3">
   <%=render "userprofile" %>
@@ -25,16 +15,14 @@
         <td width="10%">
           <img class = "round-image-100" src= <%= buy.item.avatar.url(:thumb) %>>
         </td>
-        <td width="50%">
+        <td width="50%" id= <%= buy.id %>>
           <h4><%= link_to( buy.item.title , item_path(buy.item.id)) %></h4>
             <% if buy.item.open_to_apply == true %>
               <span class="label label-default">Aceptando compradores</span>
             <% end %>
             <% if buy.item.open_to_pay == true %>
               <span class="label label-success">Aceptando pagos</span>
-              <% if buy.payment_sent == true %>
-                <span class="label label-success">Pago Enviado</span>
-              <% end %>
+              <span class="label label-success payment-sent <% if buy.payment_sent == false %> hidden <% end %> ">Pago Enviado</span>
                 <% if buy.payment_received == true %>
                 <span class="label label-success">Pago Recibido</span>
               <% end %>
@@ -44,9 +32,7 @@
               <% if buy.item_sent == true %>
                 <span class="label label-success">Articulo Enviado</span>
               <% end %>
-              <% if buy.item_received == true %>
-                <span class="label label-success">Articulo Recibido</span>
-              <% end %>
+              <span class="label label-success item-received <% if buy.item_received == false %> hidden <% end %> ">Articulo Recibido</span>
             <% end %>
             <% if buy.item.all_sent == true %>
               <span class="label label-success">Compra Enviada</span>
@@ -58,10 +44,12 @@
         <td width="40%">
         <div class="btn-group pull-right" role="group" aria-label="...">
         <% if buy.item.open_to_pay == true %>
-          <button type="button" class="btn btn-default btn-sm payment-btn" id= buy.id >Enviar Pago</button>
-          <script>('.payment-btn #buy.id').on('click', sendInfoToApi(0,buy.id))</script>
+          <a href="#" class="btn btn-default btn-sm payment-send-btn" id= <%= buy.id %> >Enviar Pago</a>
         <% end %>
-          <%= button_to 'Contactar Vendedor', create_message_path, :action => 'generate', params:{from: current_user.id, user_id: buy.item.user_id, subject: buy.item.title}, :method => 'post', class: 'btn btn-default btn-sm' %>
+        <% if buy.item.open_to_send == true %>
+          <a href="#" class="btn btn-default btn-sm item-confirm-btn" id= <%= buy.id %> >Articulo Recibido</a>
+        <% end %>        
+          <%= link_to 'Contactar Vendedor', new_message_path(from: current_user.id, user_id: buy.item.user_id, subject: buy.item.title), class: 'btn btn-default btn-sm' %>
 
           <%= link_to 'Eliminar', buy_destroy_path, :action => 'destroy',  params:{ item_id: buy.item.id}, :method => 'post', class: 'btn btn-default btn-sm' %>
         </div>

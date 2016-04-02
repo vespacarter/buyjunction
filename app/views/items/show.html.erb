@@ -16,7 +16,7 @@
          	<%if @item.open_to_apply == true %>
 				<div><p><%= button_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
 			<% else %>
-				<div><p class = "pull-right label label-danger">Venta Cerrada</p></div>
+				<div><p class = "pull-right label label-danger">Compra Cerrada</p></div>
 			<% end %>			
 		<% else %>
 			<div><p class = "pull-right pull-right label label-danger">Necesitas iniciar sesión para apuntarte a esta compra</p></div>

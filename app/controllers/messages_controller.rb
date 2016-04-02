@@ -10,6 +10,17 @@ class MessagesController < ApplicationController
 		#@item_subject = Item.find(params[:subject])
 	end
 
+	def new
+		@message = Message.new
+		@message.body = params[:body]
+		@message.subject = params[:subject]
+		@from = User.find(params[:from])
+		@to = User.find(params[:user_id])
+		#@item_subject = Item.find(params[:subject])
+	end
+
+
+
 	def create
 		message = Message.new(message_params)
 		if message.save 

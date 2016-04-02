@@ -8,8 +8,15 @@ Rails.application.routes.draw do
   get 'users/list/:id', to: 'items#listusers', as: 'userlist'
   resources :items
   resources :buys
-  resources :messages, only: [:create, :show, :destroy]
-  post 'createmessage', to: "messages#generate", as: 'create_message'
-  post 'api/main', to: 'api/api#main'
+  resources :messages, only: [:create, :show, :destroy, :new]
   root to: "site#index"
+
+  namespace :api do
+    namespace :v1 do
+      get 'buys/:id/setpayment', to: 'buys#setpayment', as: 'setpayment'
+      get 'buys/:id/paymentconfirm', to: 'buys#paymentconfirm', as: 'paymentconfirm'
+      get 'buys/:id/setitem', to: 'buys#setitem', as: 'setitem'
+      get 'buys/:id/itemconfirm', to: 'buys#itemconfirm', as: 'itemconfirm'
+    end
+  end
 end
