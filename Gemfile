@@ -27,6 +27,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #whenever gem allows to run background tasks
 gem 'whenever', :require => false
 
+#ckeditor html editor
+gem 'ckeditor'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

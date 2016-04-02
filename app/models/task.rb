@@ -2,7 +2,6 @@ class Task < ActiveRecord::Base
 
 	def self.check_for_finished_items
     	items = Item.all
-    	time = Time.now
     	date = Date.today
     	items.each do |item|
       		if (item.expiration_date <= date) && (item.open_to_apply == true)

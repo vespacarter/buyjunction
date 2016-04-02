@@ -33,13 +33,12 @@
           <li>Pedido minimo: <%= f.number_field :min_units %></li>
           <li>Nº de compradores: <%= @item.number_of_buyers %></li>
           <li>Vence el: <%= f.date_field :expiration_date %></li>
-          <li>A las: <%= f.time_field :expiration_time %></li>
         </ul>
         </p>
 
         </div>
       <div class="col-md-8">
-        <%= f.text_area :description ,size: "100x30" %></p>
+        <%= f.cktext_area :description, :ckeditor => {:uiColor => '#8DBD0C', :toolbar => 'mini'} %>
       </div>
       <div class="actions">
         <%= f.submit "Actualizar" %>

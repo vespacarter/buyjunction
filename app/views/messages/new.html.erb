@@ -54,7 +54,7 @@
       </div>
       <div class="field">
         <%= f.label 'Mensaje:' %><br />
-        <%= f.text_area :body ,size: "100x10" %>
+        <%= f.cktext_area :body, :ckeditor => {:uiColor => '#8DBD0C', :toolbar => 'mini'} %>
         <%= f.hidden_field :user_id, :value => @to.id %>
         <%= f.hidden_field :from, :value => @from.id %>
         <%= f.hidden_field :subject, :value => @message.subject %>
