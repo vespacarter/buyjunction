@@ -35,7 +35,12 @@
           <li>Vence el: <%= f.date_field :expiration_date %></li>
         </ul>
         </p>
-
+        <p>
+        <ul>
+          <li>Forma de Pago:<%= f.select :form_of_payment, [['Paypal','Paypal'],['Transferencia','Transferencia'],['Contra Reembolso','Contra Reembolso'],['Otra','Otra']] %></li>
+          <li>Cuenta de Pago:  <%= f.text_field :payment_details %></li>
+        </ul>
+        </p>
         </div>
       <div class="col-md-8">
         <%= f.cktext_area :description, :ckeditor => {:uiColor => '#8DBD0C', :toolbar => 'mini'} %>

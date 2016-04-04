@@ -134,6 +134,10 @@ color: black;
   outline: 0;
  }
 
+ .label-success {
+    background-color: #8DBD0C;
+ }
+
  .item-description-text{
     font-size: 1.2em;
     text-align: justify;

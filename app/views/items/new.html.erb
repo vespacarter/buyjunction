@@ -47,6 +47,16 @@
     <%= f.date_field :expiration_date %>
   </div>
 
+  <div class="field">
+    <%= f.label 'Forma de Pago' %><br />
+    <%= f.select :form_of_payment, [['Paypal','Paypal'],['Transferencia','Transferencia'],['Contra Reembolso','Contra Reembolso'],['Otra','Otra']] %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'Cuenta de Pago' %><br />
+    <%= f.text_field :payment_details %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Crear Venta" %>
   </div>

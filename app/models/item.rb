@@ -8,16 +8,9 @@ class Item < ActiveRecord::Base
   	#
 
 
-#	def self.get_by_owner(user)
-#		results = where(:owner => user)
-#	end
 
 	def number_of_buyers
 		buys.count
-	end
-
-	def self.get_by_buy(buy)
-		find(buy.item_id)
 	end
 
 	def add_buyer
@@ -30,7 +23,4 @@ class Item < ActiveRecord::Base
 		self.update(:number_of_buyers => self.number_of_buyers)
 	end
 
-	def buy_for_current_user
-
-	end
 end

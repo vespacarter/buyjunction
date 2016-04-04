@@ -55,7 +55,7 @@
     </p>
     <div class="btn-group pull-right" role="group" aria-label="...">
     <%= link_to 'Responder', new_message_path(from: current_user.id, user_id: @message.from, subject: "Re: " + @message.subject), class: 'btn btn-default btn-sm' %>
-     <%= link_to 'Borrar', message_path(@message.id), :method => 'delete', class: 'btn btn-default btn-sm'%>
+     <%= link_to 'Borrar', message_path(@message.id), :method => 'delete', class: 'btn btn-default btn-sm', :data => {:confirm => 'Deseas eliminar el mensaje?'}%>
      </div>
     </div>
   </div>

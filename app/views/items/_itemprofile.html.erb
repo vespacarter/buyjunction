@@ -3,13 +3,16 @@
 				    <li>En: <i><%= @item.category %></i></li>	
 					<li>Inicia la venta: <%= @item.user.username %> </li>
 					<li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
-					<li>Precio: <%= @item.prize %>€</li>
 					<li>Pedido minimo: <%= @item.min_units %></li>
 					<li>Nº de compradores: <%= @item.number_of_buyers %></li>
 					<li>Vence el: <%= @item.expiration_date %></li>
+					<li>Forma de Pago: <%=@item.form_of_payment %></li>
 				</ul>
 				<div class="progress">
-  					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow= "<%= @item.number_of_buyers %>" aria-valuemin="0" aria-valuemax="<%= @item.min_units %>" style="width:80%;">
+  					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow= <%= @item.number_of_buyers %> aria-valuemin="0" aria-valuemax=<%= @item.min_units %> style="width:80%;">
   							<%= @item.number_of_buyers %>/<%= @item.min_units %>
   					</div>
+				</div>
+				<div>
+					<center><h2><%= @item.prize %>€</h2></center>
 				</div>

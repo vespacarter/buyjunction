@@ -16,6 +16,27 @@
           <img class = "round-image-100" src= <%= buy.item.avatar.url(:thumb) %>>
         </td>
         <td width="50%" id= <%= buy.id %>>
+                              <!-- Modal -->
+                <div class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel"><img class = "round-image-50" src= <%= buy.item.avatar.url(:thumb) %>> <%= buy.item.title %></h4>
+                      </div>
+                      <div class="modal-body">
+                        <ul>
+                          <li><strong>Forma de Pago:</strong> <%= buy.item.form_of_payment %></li>
+                          <li><strong>Cuenta:</strong> <%= buy.item.payment_details %></li>
+                        </ul>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Fin Modal -->
           <h4><%= link_to( buy.item.title , item_path(buy.item.id)) %></h4>
             <% if buy.item.open_to_apply == true %>
               <span class="label label-default">Aceptando compradores</span>
@@ -44,7 +65,7 @@
         <td width="40%">
         <div class="btn-group pull-right" role="group" aria-label="...">
         <% if buy.item.open_to_pay == true %>
-          <a href="#" class="btn btn-default btn-sm"%>Forma de Pago</a>
+          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#<%= buy.id %> .modal" >Forma de Pago</button>
           <a href="#" class="btn btn-default btn-sm payment-send-btn" id= <%= buy.id %> >Enviar Pago</a>
         <% end %>
         <% if buy.item.open_to_send == true %>
@@ -52,7 +73,7 @@
         <% end %>        
           <%= link_to 'Contactar', new_message_path(from: current_user.id, user_id: buy.item.user_id, subject: buy.item.title), class: 'btn btn-default btn-sm' %>
 
-          <%= link_to 'Eliminar', buy_path(buy.id), :method => 'delete', class: 'btn btn-default btn-sm' %>
+          <%= link_to 'Eliminar', buy_path(buy.id), :method => 'delete', class: 'btn btn-default btn-sm',:data => {:confirm => 'Deseas salir de esta compra?'} %>
         </div>
         </td>
       </tr>

@@ -41,7 +41,7 @@
             <% end %>                          
           </td>
           <td width="40%">
-            <%= button_to 'Eliminar', item_path(item.id), :method => 'delete', class: 'btn btn-default btn-sm pull-right' %>
+            <%= button_to 'Eliminar', item_path(item.id), :method => 'delete', class: 'btn btn-default btn-sm pull-right',:data => {:confirm => 'Deseas eliminar esta venta?'} %>
           </td>
         </tr>
         <% end %>

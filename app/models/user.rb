@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :items
-  has_many :buys
+  has_many :buys, dependent: :delete_all
   has_many :messages
 
   # Include default devise modules. Others available are:
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
    	items = []
    	buys = user.buys
    	buys.each do |buy|
-   		items.push(Item.get_by_buy(buy))
+      items.push(buy.item)
    	end
     items
   end
@@ -32,13 +32,6 @@ class User < ActiveRecord::Base
 
 
   def unread_messages
-    #mirar select count
-    unread = 0
-    messages.each do |message|
-      if message.unread == true
-          unread =+1
-      end
-    end
-    unread
+    messages.where(read: false).count.to_s
   end
 end
