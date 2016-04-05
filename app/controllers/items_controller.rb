@@ -17,12 +17,11 @@ class ItemsController < ApplicationController
     end
 
     def search
-    	@item
+    	@items = Item.search(params[:search])
     end
 
     def show
     	@item = Item.find(params[:id])
-    	#@owner = User.find(@item.user_id)
     end
 
     def edit

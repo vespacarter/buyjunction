@@ -80,9 +80,5 @@
         <p><img class = "round-image-100" src= <%= @items.first.avatar.url(:medium) %> ></p>
     </div>   
 </div>
-
-<% @items.each do |item| %>
-	<p><img class = "round-image-100" src= <%= item.avatar.url(:thumb) %> ><%= link_to( item.title , item_path(item.id)) %></p>
-<% end %>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 <script>$('.carousel').carousel();</script>

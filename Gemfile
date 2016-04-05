@@ -30,6 +30,9 @@ gem 'whenever', :require => false
 #ckeditor html editor
 gem 'ckeditor'
 
+# searchkick searcher
+gem 'searchkick'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

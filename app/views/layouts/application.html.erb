@@ -24,9 +24,10 @@
 
       <ul class="nav navbar-nav navbar-right">
       <li>
-        <form class="navbar-form" role="search" method="post" action="search">
+        <form class="navbar-form" role="search" method="get" action="/search">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Qué estás buscando">
+          <input type="text" class="form-control" name="search" placeholder="Qué estás buscando">
+          <input type="hidden" value="<%= form_authenticity_token() %>" name="authenticity_token">
         </div>
         <button type="submit" class="btn btn-default">Buscar</button>
       </form>

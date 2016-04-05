@@ -1,0 +1,49 @@
+<div class = "row">
+<div class="col-md-3">
+	<%=render "categoriesmenu" %>
+</div>
+<div class="col-md-9">
+  <div class="panel panel-primary">
+    <div class = "panel-heading">
+      <div class = "row">
+        <div class = "col-md-10">
+          <h3 class= "menu-title"><i>Resultados de Busqueda</i></h3>
+        </div>
+      </div>
+    </div>
+    <div class = "panel-body">
+      <table class="table table-striped">
+      	<% if @items.count == 0 %> 
+      		No se han encontrado resultados.
+      	<% else %>
+        	<% @items.each do |item| %>
+        	<tr>
+          	<td width="10%">
+            	<img class = "round-image-100 img-responsive" src= <%= item.avatar.url(:thumb) %>>
+          	</td>
+          	<td width="90%">
+            	<h4><%= link_to( item.title , item_path(item.id)) %></h4>
+            	<% if item.open_to_apply == true %>
+              	<span class="label label-default">Aceptando compradores</span>
+            	<% end %>
+            	<% if item.open_to_pay == true %>
+              	<span class="label label-default">Aceptando pagos</span>
+            	<% end %>
+            	<% if item.open_to_send == true %>
+              	<span class="label label-default">Realizando envios</span>
+            	<% end %>
+            	<% if item.all_sent == true %>
+             	 <span class="label label-default">Compra Enviada</span>
+            	<% end %>
+            	<% if item.closed_status == true %>
+              	<span class="label label-danger">Venta Cerrada</span>
+            	<% end %>                          
+          	</td>
+        	</tr>
+        	<% end %>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
