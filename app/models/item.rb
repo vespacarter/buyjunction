@@ -23,4 +23,12 @@ class Item < ActiveRecord::Base
 		self.update(:number_of_buyers => self.number_of_buyers)
 	end
 
+	def success_percentage
+		success = ((100 * self.number_of_buyers)/self.min_units).to_i
+		if (success > 100)
+			return 100
+		else
+			return success
+		end
+	end
 end

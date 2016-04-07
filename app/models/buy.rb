@@ -20,10 +20,9 @@ class Buy < ActiveRecord::Base
 	end
 
 	def self.get_users_by_item_id(item_id)
-		users = []
 		buys = where(:item_id => item_id)
-		buys.each do |buy|
-			users.push(buy.buyer_id)
+		users = buys.map do |buy|
+			buy.buyer_id
 		end
 		users
 	end

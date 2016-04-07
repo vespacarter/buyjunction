@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 	def buys
 		@user = current_user
-		@buys = User.get_active_items(current_user)
+		@buys = @user.buys
 	end
 
 

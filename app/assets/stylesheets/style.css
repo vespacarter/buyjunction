@@ -3,6 +3,11 @@ font-family: 'Kanit', sans-serif;
 font-weight: 400;
 }
 
+ul
+{
+    list-style-type: none;
+}
+
 a:link{
     color: black;
 }

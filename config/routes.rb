@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'messages', to: 'users#messages', as:'user_messages'
   get 'users/list/:id', to: 'items#listusers', as: 'userlist'
   get 'search', to: 'site#search', as:'search_item'
+  get 'categories', to: 'site#categories', as:'search_categories'
   resources :items
   resources :buys
   resources :messages, only: [:create, :show, :destroy, :new]

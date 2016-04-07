@@ -8,17 +8,24 @@
     </div>
     <div class = "panel-body">
       <div class="list-group">
-  		<button type="button" class="list-group-item">Informática y Tecnología</button>
-  		<button type="button" class="list-group-item">Coches y Motos</button>
-  		<button type="button" class="list-group-item">Deporte y Tiempo Libre</button>
-  		<button type="button" class="list-group-item">Muebles y Cosas de Casa</button>
-  		<button type="button" class="list-group-item">Consolas y Videojuegos</button>
-  		<button type="button" class="list-group-item">Música, Libros, Películas</button>
-   		<button type="button" class="list-group-item">Moda y Complementos</button>
-    	<button type="button" class="list-group-item">Niños, Bebes y Juguetes</button>
-    	<button type="button" class="list-group-item">Electrodomésticos</button>
-    	<button type="button" class="list-group-item">Otros</button>
+      <%= link_to 'Informática y Tecnología', search_categories_path(category: 'Informática y Tecnología'), :action => 'get', :method => 'get', class: 'list-group-item'%>
+      <%= link_to 'Coches y Motos', search_categories_path(category: 'Coches y Motos'), :action => 'get', :method => 'get', class: 'list-group-item'%>
 
+      <%= link_to 'Deporte y Tiempo Libre', search_categories_path(category: 'Deporte y Tiempo Libre'), :action => 'get', :method => 'get', class: 'list-group-item'%>
+
+      <%= link_to 'Muebles y Cosas de Casa', search_categories_path(category: 'Muebles y Cosas de Casa'), :action => 'get', :method => 'get', class: 'list-group-item'%>
+
+      <%= link_to 'Consolas y Videojuegos', search_categories_path(category: 'Consolas y Videojuegos'), :action => 'get', :method => 'get', class: 'list-group-item'%>
+
+      <%= link_to 'Música, Libros, Películas', search_categories_path(category: 'Música, Libros, Películas'), :action => 'get', :method => 'get', class: 'list-group-item'%>
+
+      <%= link_to 'Moda y Complementos', search_categories_path(category: 'Moda y Complementos'), :action => 'get', :method => 'get', class: 'list-group-item'%>
+
+      <%= link_to 'Niños, Bebes y Juguetes', search_categories_path(category: 'Niños, Bebes y Juguetes'), :action => 'get', :method => 'get', class: 'list-group-item'%>
+
+      <%= link_to 'Electrodomésticos', search_categories_path(category: 'Electrodomésticos'), :action => 'get', :method => 'get', class: 'list-group-item'%>
+
+      <%= link_to 'Otros', search_categories_path(category: 'Otros'), :action => 'get', :method => 'get', class: 'list-group-item'%>
 	  </div>
     </div>
 </div>

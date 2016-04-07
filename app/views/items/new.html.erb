@@ -1,63 +1,91 @@
-<h2>Crear venta</h2>
-<%= form_for(@item) do |f| %>
 
-  <div class="field">
-    <%= f.label 'Titulo' %><br />
-    <%= f.text_field :title, autofocus: true %>
+<%= simple_form_for(@item, html: { class: 'form-horizontal' }) do |f| %>
+  <div class= "row">
+    <div class= col-sm-offset-1 col sm-11>
+      <div class="row">
+        <h2>Nueva venta</h2>
+        <p>&nbsp</p>
+      </div>
+      <div class= "form-group">
+        <div class= "row">
+          <div class="field col-sm-11">
+            <%= f.input :title, autofocus: true, label: false, placeholder: 'Titulo', input_html: {class: 'form-control input-lg' }%>
+          </div>
+        </div>
+        <div class= "row">
+          <div class="field col-sm-1">
+            <%= f.label 'Categoría: ' %>
+          </div>
+          <div class="field col-sm-3">
+            <%= f.select :category, [['Informática y Tecnología','Informática y Tecnología'],['Coches y Motos','Coches y Motos'],['Deporte y Tiempo Libre','Deporte y Tiempo Libre'],['Muebles y Cosas de Casa','Muebles y Cosas de Casa'],['Consolas y Videojuegos','Consolas y Videojuegos'],['Música, Libros, Películas','Música, Libros, Películas'],['Moda y Complementos','Moda y Complementos'],['Niños, Bebés y Juguetes','Niños, Bebés y Juguetes'],['Electrodomésticos','Electrodomésticos'],['Otros','Otros']], {}, { :class => 'form-control' } %>
+          </div>
+          <div class="field col-sm-3">
+            <%= f.label 'Imagen Principal:' %>
+          </div>
+          <div class="field col-sm-4">
+            <%= f.file_field :avatar, { :class => 'form-control' } %>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp</p>
+      <div class= "form-group">
+        <div class= "row">
+          <div class="field col-sm-11">
+            <%= f.label 'Descripción:' %><br />
+            <%= f.cktext_area :description, :ckeditor => {:uiColor => '#8DBD0C', :toolbar => 'mini'} %>
+          </div>
+        </div>
+      </div>
+      <p>&nbsp</p>
+      <div class= "form-group">
+        <div class= "row">
+          <div class="col-sm-3">
+            <%= f.label 'Fabricante: ' %>
+          </div>
+          <div class="col-sm-offset-3 col-sm-3">
+            <%= f.label 'Forma de Pago' %>
+          </div>
+        </div>   
+        <div class= "row">
+          <div class="col-sm-2 field">
+            <%= f.input :seller, input_html: {class: 'form-control' }, label: false, placeholder: 'Nombre del Fabricante' %> 
+          </div>
+          <div class="col-sm-3 field">
+            <%= f.input :seller_url, input_html: {class: 'form-control' }, label: false, placeholder: 'Sitio Web', as: :url %>
+          </div>
+          <div class="col-sm-3 field">
+            <%= f.select :form_of_payment, [['Paypal','Paypal'],['Transferencia','Transferencia'],['Contra Reembolso','Contra Reembolso'],['Otra','Otra']], {}, { :class => 'form-control' } %>
+          </div>
+          <div class="col-sm-3 field">
+            <%= f.input :payment_details, input_html: {class: 'form-control' }, label: false, placeholder: 'Cuenta de Pago' %>
+          </div>        
+        </div>
+      </div>
+      <div class= "form-group">
+        <div class= "row">
+          <div class="col-sm-offset-6 col-sm-3">
+            <%= f.label 'Fecha limite' %>
+          </div>             
+        </div>
+        <div class= "row">
+          <div class="col-sm-3 field">
+            <%= f.input :prize, placeholder: 'Precio', as: :integer, label: false %>
+          </div>
+          <div class="col-sm-3 field">
+            <%= f.input :min_units, placeholder: 'Cantidad Minima', as: :integer, label: false %>
+          </div>  
+          <div class="col-sm-3 field">
+            <%= f.input :expiration_date, placeholder: 'Fecha Limite', as: :date, label: false %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-    <div class="field">
-    <%= f.label 'Categoria' %><br />
-    <%= f.select :category, [['Informática y Tecnología','Informática y Tecnología'],['Coches y Motos','Coches y Motos'],['Deporte y Tiempo Libre','Deporte y Tiempo Libre'],['Muebles y Cosas de Casa','Muebles y Cosas de Casa'],['Consolas y Videojuegos','Consolas y Videojuegos'],['Música, Libros, Películas','Música, Libros, Películas'],['Moda y Complementos','Moda y Complementos'],['Niños, Bebés y Juguetes','Niños, Bebés y Juguetes'],['Electrodomesticos','Electrodomesticos'],['Otros','Otros']] %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Descripcion' %><br />
-    <%= f.cktext_area :description, :ckeditor => {:uiColor => '#8DBD0C', :toolbar => 'mini'} %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Imagen Principal' %><br />
-    <%= f.file_field :avatar %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label 'Fabricante' %><br />
-    <%= f.text_field :seller %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Web del fabricante' %><br />
-    <%= f.url_field :seller_url %>
-  </div> 
-
-  <div class="field">
-    <%= f.label 'Precio' %><br />
-    <%= f.number_field :prize %>
-  </div> 
-
-  <div class="field">
-    <%= f.label 'Cantidad minima' %><br />
-    <%= f.number_field :min_units %>
-  </div> 
-
-  <div class="field">
-    <%= f.label 'Fecha limite' %><br />
-    <%= f.date_field :expiration_date %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Forma de Pago' %><br />
-    <%= f.select :form_of_payment, [['Paypal','Paypal'],['Transferencia','Transferencia'],['Contra Reembolso','Contra Reembolso'],['Otra','Otra']] %>
-  </div>
-
-  <div class="field">
-    <%= f.label 'Cuenta de Pago' %><br />
-    <%= f.text_field :payment_details %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Crear Venta" %>
+  <div class="row">
+    <div class="col-sm-offset-9 col-sm-2">
+      <div class="actions">
+        <%= f.submit "Crear Venta", :class => 'form-control'%>
+      </div>
+    </div>
   </div>
 <% end %>

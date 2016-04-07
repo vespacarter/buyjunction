@@ -9,7 +9,7 @@
 					<li>Forma de Pago: <%=@item.form_of_payment %></li>
 				</ul>
 				<div class="progress">
-  					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow= <%= @item.number_of_buyers %> aria-valuemin="0" aria-valuemax=<%= @item.min_units %> style="width:80%;">
+  					<div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow= <%= @item.success_percentage %> aria-valuemin="0" aria-valuemax="100" style="width:<%= @item.success_percentage %>%;">
   							<%= @item.number_of_buyers %>/<%= @item.min_units %>
   					</div>
 				</div>

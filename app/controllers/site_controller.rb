@@ -8,5 +8,9 @@ class SiteController < ApplicationController
     	@items = Item.search(params[:search])
     end
 
+    def categories
+    	@items = Item.where(category:  params[:category])
+    end
+
 
 end
