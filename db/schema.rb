@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405135458) do
+ActiveRecord::Schema.define(version: 20160406111550) do
 
   create_table "buys", force: :cascade do |t|
     t.integer  "item_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160405135458) do
     t.integer  "user_id"
     t.boolean  "item_sent",        default: false
     t.boolean  "item_received",    default: false
+    t.boolean  "marked_as_voted",  default: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -59,6 +60,12 @@ ActiveRecord::Schema.define(version: 20160405135458) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "item_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.integer "score"
+    t.string  "description"
+    t.integer "user_id"
   end
 
   create_table "tasks", force: :cascade do |t|

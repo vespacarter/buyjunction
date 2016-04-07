@@ -72,4 +72,12 @@ class Buy < ActiveRecord::Base
 		end
 		self.item.save
 	end
+
+	def voted
+		self.marked_as_voted = true
+	end
+
+	def is_voted?
+		self.marked_as_voted
+	end
 end

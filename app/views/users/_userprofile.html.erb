@@ -10,6 +10,7 @@
       </div>      
     </div>
     <div class = "panel-body">
+
     <p>
     <center>
       <img class = "round-user-avatar-medium" src= <%= current_user.avatar.url(:medium) %> >
@@ -19,6 +20,31 @@
         <li><strong>Email:</strong> <%= current_user.email %></li>
         <li><strong>Nombre:</strong> <%= current_user.fullname %></li>
         <li><strong>Direccion:</strong> <%= current_user.address %> <%= current_user.city %> <%= current_user.state %> <%= current_user.zipcode %></li>
+        <li><strong>Tus votos: </strong><a href="#" data-toggle="modal" data-target=".modal.showscores"><%= current_user.calculate_score %></a></li>
       </ul>
     </div>
   </div>
+      <!-- Modal Scores-->
+<div class="modal fade showscores"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><img class = "round-image-50" src= <%= current_user.avatar.url(:thumb) %>> Votaciones a <%= current_user.username %></h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <% current_user.scores.each do |score| %>
+            <tr>
+              <td><%= score.description %> </td><td><%= score.score %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+                <!-- Fin Modal -->

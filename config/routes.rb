@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   get 'buys', to: 'users#buys', as:'user_buys'
   get 'messages', to: 'users#messages', as:'user_messages'
   get 'users/list/:id', to: 'items#listusers', as: 'userlist'
-  get 'search', to: 'items#search', as:'search_item'
+  get 'search', to: 'site#search', as:'search_item'
   resources :items
   resources :buys
   resources :messages, only: [:create, :show, :destroy, :new]
+  resources :scores, only:[:create]
   root to: "site#index"
 
   namespace :api do

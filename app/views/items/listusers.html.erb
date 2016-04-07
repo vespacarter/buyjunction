@@ -60,7 +60,7 @@
                 </div>
                 <!-- Fin Modal -->
                   </td>
-                  <td width="50%">
+                  <td width="40%">
                     <h4><%= buy.user.username %></h4>
                     <% if buy.item.open_to_pay == true %>
                       <span class="label label-success">Aceptando pagos</span>
@@ -81,7 +81,7 @@
                     <% end %>
 
                   </td>
-                  <td width="40%">
+                  <td width="60%">
                     <div class="btn-group pull-right" role="group" aria-label="...">
                       <% if buy.item.open_to_pay == true %>
                         <a href="#" class="btn btn-default btn-sm payment-confirm-btn" id= <%= buy.id %> >Pago Recibido</a>

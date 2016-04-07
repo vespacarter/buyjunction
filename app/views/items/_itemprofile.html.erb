@@ -1,7 +1,7 @@
     			<p><img class = "img-responsive round-item-avatar-big" src =  <%= @item.avatar.url(:big)%> ></p>
 				<ul>
 				    <li>En: <i><%= @item.category %></i></li>	
-					<li>Inicia la venta: <%= @item.user.username %> </li>
+					<li>Inicia la venta: <%= @item.user.username %>	<a href="#" data-toggle="modal" data-target=".modal.scores"><%=@item.user.calculate_score %></a></li>
 					<li>Fabricante: <a href= <%= @item.seller_url %> target = '_blank'><%= @item.seller %></a></li>
 					<li>Pedido minimo: <%= @item.min_units %></li>
 					<li>Nº de compradores: <%= @item.number_of_buyers %></li>
@@ -16,3 +16,28 @@
 				<div>
 					<center><h2><%= @item.prize %>€</h2></center>
 				</div>
+
+      <!-- Modal Scores-->
+<div class="modal fade scores"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel"><img class = "round-image-50" src= <%= @item.user.avatar.url(:thumb) %>> Votaciones a <%= @item.user.username %></h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-striped">
+          <% @item.user.scores.each do |score| %>
+            <tr>
+              <td><%= score.description %> </td><td><%= score.score %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+                <!-- Fin Modal -->

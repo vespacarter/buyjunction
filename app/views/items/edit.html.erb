@@ -11,7 +11,7 @@
     <div class = "panel-heading">
       <div class = "row">
         <div class = "col-md-8">
-          <h2 class="edit-item"><%= f.text_field :title, autofocus: true %></h2>
+          <h2 class="item-edit-text"><%= f.text_field :title, autofocus: true %></h2>
         </div>
         <div class = "col-md-4">
          
@@ -21,7 +21,7 @@
     <div class = "panel-body">
       <div class = "row">
       <div class="col-md-4">
-        <%= image_tag @item.avatar.url(:medium) %><br />
+        <img class = "img-responsive round-item-avatar-big" src =  <%= @item.avatar.url(:big)%> >
         <%= f.file_field :avatar %>
         <p>
         <ul>
