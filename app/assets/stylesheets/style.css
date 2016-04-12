@@ -29,11 +29,11 @@ a:visited{
 }
 
 .btn-edit-user{
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .btn-new-buy{
-    margin-top:15px;
+    margin-top:10px;
 }
 .logo-text-bold{
 font-family: 'Kanit', sans-serif;
@@ -56,6 +56,10 @@ display: inline;
 max-height: 250%;
 vertical-align: text-top;
 margin-top: -16px;
+}
+
+.navbar-default .navbar-brand {
+    color: black;
 }
 
 .round-image-50 {

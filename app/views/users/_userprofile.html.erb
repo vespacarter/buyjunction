@@ -5,7 +5,12 @@
           <h2 class= "menu-title"><i><%= current_user.username %></i></h2>
         </div>
         <div class = "col-md-4">
-         <%= link_to 'Editar', edit_user_registration_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right btn-edit-user'%>
+          <%= link_to  edit_user_registration_path, :action => 'get', :method => 'get', class: ' pull-right btn-edit-user', 
+                    'data-toggle' =>"tooltip",
+                    'data-original-title' => "Editar perfil",
+                    'data-placement' => 'auto top' do%>
+            <span class="glyphicon glyphicon-pencil"></span>
+          <% end %>
         </div>
       </div>      
     </div>
@@ -47,4 +52,7 @@
     </div>
   </div>
 </div>
+<script>
+
+</script>
                 <!-- Fin Modal -->

@@ -84,13 +84,25 @@
                   <td width="60%">
                     <div class="btn-group pull-right" role="group" aria-label="...">
                       <% if buy.item.open_to_pay == true %>
-                        <a href="#" class="btn btn-default btn-sm payment-confirm-btn" id= <%= buy.id %> >Pago Recibido</a>
+                        <span data-toggle="tooltip" title="Marcar pago como recibido">
+                          <a href="#" class="payment-confirm-btn" id= <%= buy.id %> ><span class="glyphicon glyphicon-euro"></span></a>
                       <% end %>
                       <% if buy.item.open_to_send == true %>
-                        <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#<%= buy.id %> .modal" >Datos de Envio</button>  
-                        <a href="#" class="btn btn-default btn-sm item-sent-btn" id= <%= buy.id %> >Articulo Enviado</a>
+                        <span data-toggle="tooltip" title="Ver datos de envio">
+                          <a href="#" data-toggle="modal" data-target="#<%= buy.id %> .modal" ><span class="glyphicon glyphicon-user"></span></a>
+                        </span>
+
+                        <span data-toggle="tooltip" title="Marcar artículo como enviado">
+                        <a href="#" class="item-sent-btn" id= <%= buy.id %> ><span class="glyphicon glyphicon-share"></span></a>
+                        </span>
+
                       <% end %>
-                      <%= link_to 'Contactar', new_message_path(from: current_user.id, user_id: buy.user_id, subject: buy.item.title), class: 'btn btn-default btn-sm' %>
+                      <%= link_to new_message_path(from: current_user.id, user_id: buy.user_id, subject: buy.item.title),
+                    'data-toggle' =>"tooltip",
+                    'data-original-title' => "Contactar comprador",
+                    'data-placement' => 'auto top' do%>
+                      <span class="glyphicon glyphicon-envelope"></span>
+                    <% end %>
                     </div>
                   </td>
                 </tr>

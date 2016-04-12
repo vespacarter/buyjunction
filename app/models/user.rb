@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+  class User < ActiveRecord::Base
   has_many :items
   has_many :buys, dependent: :delete_all
   has_many :messages
@@ -22,15 +22,6 @@ class User < ActiveRecord::Base
    	end
     items
   end
-
-
-  def self.get_users_by_id(user_ids)
-    users = user_ids.map do |user_id|
-      find(user_id)
-    end
-    users
-  end
-
 
   def unread_messages
     messages.where(read: false).count.to_s

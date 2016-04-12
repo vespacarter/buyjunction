@@ -1,4 +1,3 @@
-<%= render "usermenu", :locals => {:option => 0 }%>
 <div class = "row">
 <div class="col-md-3">
   <%=render "userprofile" %>
@@ -11,7 +10,12 @@
           <h3 class= "menu-title"><i>Tus ventas</i></h3>
         </div>
         <div class = "col-md-2">
-          <%= link_to 'Nueva Venta', new_item_path, :action => 'get', :method => 'get', class: 'btn btn-default btn-sm pull-right btn-new-buy'%>
+          <%= link_to  new_item_path, :action => 'get', :method => 'get', class: 'pull-right btn-new-buy', 
+                    'data-toggle' =>"tooltip",
+                    'data-original-title' => "Nueva venta",
+                    'data-placement' => 'auto top' do%>
+            <h4><span class="glyphicon glyphicon-plus"></span></h4>
+          <% end %>
         </div>
       </div>
     </div>
@@ -25,23 +29,28 @@
           <td width="50%">
             <h4><%= link_to( item.title , item_path(item.id)) %></h4>
             <% if item.open_to_apply == true %>
-              <span class="label label-default">Aceptando compradores</span>
+              <span class="label label-default" data-toggle="tooltip" title="Aceptando compradores"><span class="glyphicon glyphicon-user"></span></span>
             <% end %>
             <% if item.open_to_pay == true %>
-              <span class="label label-default">Aceptando pagos</span>
+              <span class="label label-success" data-toggle="tooltip" title="Aceptando pagos"><span class="glyphicon glyphicon-euro"></span></span>
             <% end %>
             <% if item.open_to_send == true %>
-              <span class="label label-default">Realizando envios</span>
+              <span class="label label-success" data-toggle="tooltip" title="Realizando envios"><span class="glyphicon glyphicon-road"></span></span>>
             <% end %>
             <% if item.all_sent == true %>
-              <span class="label label-default">Compra Enviada</span>
+              <span class="label label-success" data-toggle="tooltip" title="Compra Enviada"><span class="glyphicon glyphicon-gift"></span></span>
             <% end %>
             <% if item.closed_status == true %>
-              <span class="label label-danger">Venta Cerrada</span>
+              <span class="label label-danger" data-toggle="tooltip" title="Venta Cerrada" ><span class="glyphicon glyphicon-remove"></span></span>
             <% end %>                          
           </td>
           <td width="40%">
-            <%= button_to 'Eliminar', item_path(item.id), :method => 'delete', class: 'btn btn-default btn-sm pull-right',:data => {:confirm => 'Deseas eliminar esta venta?'} %>
+            <%= link_to item_path(item.id), :method => 'delete', class: 'pull-right',:data => {:confirm => 'Deseas eliminar esta venta?'},
+                    'data-toggle' =>"tooltip",
+                    'data-original-title' => "Eliminar",
+                    'data-placement' => 'auto top' do%>
+                <span class="glyphicon glyphicon-trash"></span>
+            <% end %>
           </td>
         </tr>
         <% end %>

@@ -21,16 +21,8 @@ class Buy < ActiveRecord::Base
 
 	def self.get_users_by_item_id(item_id)
 		buys = where(:item_id => item_id)
-		users = buys.map do |buy|
+		buys.map do |buy|
 			buy.buyer_id
-		end
-		users
-	end
-
-	def self.destroy_by_item(item)
-		buys = item.buys
-		buys.each do |buy|
-			buy.destroy
 		end
 	end
 

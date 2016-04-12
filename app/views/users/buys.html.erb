@@ -1,4 +1,3 @@
-<%= render "usermenu", :locals => {:option => 1 }%>
 <div class = "row">
 <div class="col-md-3">
   <%=render "userprofile" %>
@@ -31,7 +30,7 @@
                         </ul>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span></button>
                       </div>
                     </div>
                   </div>
@@ -70,8 +69,8 @@
                           </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                          <button type="submit" class="btn btn-default">Buscar</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>
                         </div>
                       </form>
                     </div>
@@ -79,45 +78,71 @@
                 </div>
                 <!-- Fin Modal -->
           <h4><%= link_to( buy.item.title , item_path(buy.item.id)) %></h4>
+          <h6><%= buy.item.prize %> €</h6>
+            <p>
             <% if buy.item.open_to_apply == true %>
-              <span class="label label-default">Aceptando compradores</span>
+              <span class="label label-default" data-toggle="tooltip" title="Aceptando compradores"><span class="glyphicon glyphicon-user"></span></span>
             <% end %>
             <% if buy.item.open_to_pay == true %>
-              <span class="label label-success">Aceptando pagos</span>
-              <span class="label label-success payment-sent <% if buy.payment_sent == false %> hidden <% end %> ">Pago Enviado</span>
+              <span class="label label-success" data-toggle="tooltip" title="Aceptando pagos"><span class="glyphicon glyphicon-euro"></span></span>
+
+              <span class="label label-default payment-sent <% if buy.payment_sent == false %> hidden <% end %> " data-toggle="tooltip" title="Pago Enviado"><span class="glyphicon glyphicon-share"></span></span>
                 <% if buy.payment_received == true %>
-                <span class="label label-success">Pago Recibido</span>
+
+                <span class="label label-success" data-toggle="tooltip" title="Pago Enviado"><span class="glyphicon glyphicon-share"></span></span>
               <% end %>
             <% end %>
             <% if buy.item.open_to_send == true %>
-              <span class="label label-success">Realizando envios</span>
+              <span class="label label-success" data-toggle="tooltip" title="Realizando envios"><span class="glyphicon glyphicon-road"></span></span>
               <% if buy.item_sent == true %>
-                <span class="label label-success">Articulo Enviado</span>
+
+                <span class="label label-default" data-toggle="tooltip" title="Artículo enviado"><span class="glyphicon glyphicon-gift"></span></span>
               <% end %>
-              <span class="label label-success item-received <% if buy.item_received == false %> hidden <% end %> ">Articulo Recibido</span>
+              <span class="label label-success item-received <% if buy.item_received == false %> hidden <% end %> " data-toggle="tooltip" title="Artículo marcado como recibido"><span class="glyphicon glyphicon-gift"></span></span>
             <% end %>
             <% if buy.item.all_sent == true %>
-              <span class="label label-success">Compra Enviada</span>
+              <span class="label label-success" data-toggle="tooltip" title="Compra Enviada"><span class="glyphicon glyphicon-gift"></span></span>
             <% end %>
             <% if buy.item.closed_status == true %>
-              <span class="label label-danger">Venta Cerrada</span>
-            <% end %>    
+              <span class="label label-danger" data-toggle="tooltip" title="Venta Cerrada" ><span class="glyphicon glyphicon-remove"></span></span>
+            <% end %>
+            </p>    
         </td>
         <td width="40%">
         <div class="btn-group pull-right" role="group" aria-label="...">
         <% if buy.item.open_to_pay == true %>
-          <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#<%= buy.id %> .modal.payment" >Forma de Pago</button>
-          <a href="#" class="btn btn-default btn-sm payment-send-btn" id= <%= buy.id %> >Enviar Pago</a>
+          <span data-toggle="tooltip" title="Ver forma de pago">
+            <a href="#" data-toggle="modal" data-target="#<%= buy.id %> .modal.payment" ><span class="glyphicon glyphicon-euro"></span></a>
+          </span>
+          <span data-toggle="tooltip" title="Marcar pago como enviado">
+          <a href="#" class="payment-send-btn" id= <%= buy.id %> ><span class="glyphicon glyphicon-share"></span></a>
+          </span>
         <% end %>
         <% if buy.item.open_to_send == true %>
+          <span data-toggle="tooltip" title="Marcar artículo como recibido">
           <a href="#" class="btn btn-default btn-sm item-confirm-btn" id= <%= buy.id %> >Articulo Recibido</a>
+          </span>
         <% end %>
         <% if (buy.item.all_sent == true) && (buy.is_voted? == false) %>
-           <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#<%= buy.id %> .modal.scores" >Puntuar Vendedor</button>
+        <span data-toggle="tooltip" title="Votar vendedor">
+           <a href="#" data-toggle="modal" data-target="#<%= buy.id %> .modal.scores" ><span class="glyphicon glyphicon-thumbs-up"></span>
+           </a>
+        </span>
         <% end %>
-          <%= link_to 'Contactar', new_message_path(from: current_user.id, user_id: buy.item.user_id, subject: buy.item.title), class: 'btn btn-default btn-sm' %>
 
-          <%= link_to 'Eliminar', buy_path(buy.id), :method => 'delete', class: 'btn btn-default btn-sm',:data => {:confirm => 'Deseas salir de esta compra?'} %>
+          <%= link_to new_message_path(from: current_user.id, user_id: buy.item.user_id, subject: buy.item.title),
+                    'data-toggle' =>"tooltip",
+                    'data-original-title' => "Contactar vendedor",
+                    'data-placement' => 'auto top' do%>
+                <span class="glyphicon glyphicon-envelope"></span>
+          <% end %>
+
+          <%= link_to buy_path(buy.id), :method => 'delete',:data => {:confirm => 'Deseas salir de esta compra?'},
+                    'data-toggle' =>"tooltip",
+                    'data-original-title' => "Eliminar",
+                    'data-placement' => 'auto top' do%>
+                <span class="glyphicon glyphicon-trash"></span>
+          <% end %>
         </div>
         </td>
       </tr>

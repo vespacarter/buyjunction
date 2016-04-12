@@ -1,22 +1,12 @@
 class MessagesController < ApplicationController
 	before_action :authenticate_user!
 
-	def generate
-		@message = Message.new
-		@message.body = params[:body]
-		@message.subject = params[:subject]
-		@from = User.find(params[:from])
-		@to = User.find(params[:user_id])
-		#@item_subject = Item.find(params[:subject])
-	end
-
 	def new
 		@message = Message.new
 		@message.body = params[:body]
 		@message.subject = params[:subject]
 		@from = User.find(params[:from])
 		@to = User.find(params[:user_id])
-		#@item_subject = Item.find(params[:subject])
 	end
 
 
@@ -42,7 +32,6 @@ class MessagesController < ApplicationController
 	def destroy
 		message = Message.find(params[:id])
 		message.destroy
-
 		redirect_to user_messages_path
 	end
 

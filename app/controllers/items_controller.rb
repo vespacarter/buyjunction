@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 	end
 
 	def create	
-		:authenticate_user!
+		authenticate_user!
 		item = Item.new(item_params)
 		item.user_id = current_user.id
 		if item.save
@@ -37,8 +37,7 @@ class ItemsController < ApplicationController
 
     def destroy
         :authenticate_user!
-        itemtodestroy = Item.find(params[:id])
-        Buy.destroy_by_item(itemtodestroy)  
+        itemtodestroy = Item.find(params[:id]) 
         itemtodestroy.destroy
         redirect_to profile_path
     end
