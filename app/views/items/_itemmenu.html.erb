@@ -1,5 +1,6 @@
-<ul class="nav nav-pills">
-	<li role="presentation"<%if locals[:option] == 0%>class="active"<%end%>><a href= <%= item_path %> >Vista</a></li>
-	<li role="presentation" <%if locals[:option] == 1%>class="active"<%end%>><a href= <%= edit_item_path %> >Editar</a></li>
-	<li role="presentation" <%if locals[:option] == 2%>class="active"<%end%>><a href= <%= userlist_path %> >Gestionar Compradores</a></li>
+<ul class="nav nav-pills pull-right">
+	<li role="presentation"<%if locals[:option] == 0%>class="active"<%end%> data-toggle="tooltip" title="Vista">
+	<a href= <%= item_path %>><span class="glyphicon glyphicon-eye-open"></span></a></li>
+	<li role="presentation" <%if locals[:option] == 1%>class="active"<%end%> data-toggle="tooltip" title="Editar"><a href= <%= edit_item_path %> ><span class="glyphicon glyphicon-pencil"></span></a></li>
+	<li role="presentation" <%if locals[:option] == 2%>class="active"<%end%> data-toggle="tooltip" title="Gestionar compradores"><a href= <%= userlist_path %> ><span class="glyphicon glyphicon-user"></span></a></li>
 </ul>

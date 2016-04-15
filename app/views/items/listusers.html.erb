@@ -9,9 +9,11 @@
           <h2 class= "menu-title"><i><%= @item.title %></i></h2>
         </div>
         <div class = "col-md-4">
+        &bnsp&
          <% if user_signed_in? %>
           <% if @item.open_to_apply == true %>
             <div><p><%= button_to 'Apuntarse a esta compra', buys_path, :action => 'create', params:{ item_id: @item.id}, :method => 'post', class: 'btn btn-default btn-sm pull-right'%></p></div>
+            
           <% else %>
             <div><p class = "pull-right label label-danger">Compra Cerrada</p></div>
           <% end %>
@@ -63,21 +65,25 @@
                   <td width="40%">
                     <h4><%= buy.user.username %></h4>
                     <% if buy.item.open_to_pay == true %>
-                      <span class="label label-success">Aceptando pagos</span>
-                      <span class="label label-success payment-received <% if buy.payment_received == false %> hidden <% end %>">Pago Recibido</span>
+                      <span class="label label-default" data-toggle="tooltip" title="Aceptando pagos"><span class="glyphicon glyphicon-euro"></span></span>
                       <% if buy.payment_sent == true %>
-                        <span class="label label-success">Pago Enviado</span>
+                        <span class="label label-default" data-toggle="tooltip" title="Pago enviado"><span class="glyphicon glyphicon-euro"></span></span>
                       <% end %>
+
+                      <span class="label label-success payment-received <% if buy.payment_received == false %> hidden <% end %>" data-toggle="tooltip" title="Pago recibido"><span class="glyphicon glyphicon-euro"></span></span>
+
                     <% end %>
                     <% if buy.item.open_to_send == true %>
-                      <span class="label label-success">Aceptando envios</span>
-                      <span class="label label-success item-sent <% if buy.item_sent == false %> hidden <% end %>">Articulo Enviado</span>
+                      <span class="label label-success" data-toggle="tooltip" title="Aceptando envios"><span class="glyphicon glyphicon-road"></span></span>
+
+                      <span class="label label-default item-sent <% if buy.item_sent == false %> hidden <% end %>" data-toggle="tooltip" title="Artículo Enviado"><span class="glyphicon glyphicon-gift"></span></span>
+
                       <% if buy.item_received == true %>
-                        <span class="label label-success">Articulo Recibido</span>
+                        <span class="label label-success" data-toggle="tooltip" title="Artículo Recibido"><span class="glyphicon glyphicon-gift"></span></span>
                       <% end %>
                     <% end %>
                     <% if buy.item.all_sent == true %>
-                      <span class="label label-success">Compra Enviada</span>
+                      <span class="label label-success" data-toggle="tooltip" title="Compra Enviada"><span class="glyphicon glyphicon-gift"></span></span>
                     <% end %>
 
                   </td>
@@ -86,6 +92,7 @@
                       <% if buy.item.open_to_pay == true %>
                         <span data-toggle="tooltip" title="Marcar pago como recibido">
                           <a href="#" class="payment-confirm-btn" id= <%= buy.id %> ><span class="glyphicon glyphicon-euro"></span></a>
+                          </span>
                       <% end %>
                       <% if buy.item.open_to_send == true %>
                         <span data-toggle="tooltip" title="Ver datos de envio">

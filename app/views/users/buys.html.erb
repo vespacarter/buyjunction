@@ -120,7 +120,7 @@
         <% end %>
         <% if buy.item.open_to_send == true %>
           <span data-toggle="tooltip" title="Marcar artículo como recibido">
-          <a href="#" class="btn btn-default btn-sm item-confirm-btn" id= <%= buy.id %> >Articulo Recibido</a>
+          <a href="#" class="item-confirm-btn" id= <%= buy.id %> ><span class="glyphicon glyphicon-gift"></span></a>
           </span>
         <% end %>
         <% if (buy.item.all_sent == true) && (buy.is_voted? == false) %>

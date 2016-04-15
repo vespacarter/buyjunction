@@ -49,34 +49,106 @@
 </div>
 </div>
 <% else %>
+    <div class="standard-layout">
         <center>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+        <div>
+            <%= link_to new_user_registration_path, :action => 'get', :method => 'get',
+                    'data-toggle' =>"tooltip",
+                    'data-original-title' => "Registrarse",
+                    'data-placement' => 'auto bottom' do%>
+                <span class="glyphicon glyphicon-user home-glyphs"></span>
+            <% end %>
+            &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+            <%= link_to  new_user_session_path, :action => 'new', :method => 'get',
+                    'data-toggle' =>"tooltip",
+                    'data-original-title' => "Conectar",
+                    'data-placement' => 'auto bottom' do%>
+                <span class="glyphicon glyphicon-log-in home-glyphs"></span>
+            <% end %>
+        </div>
+
+
             <div id="carousel-example" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
-                <div class="carousel-inner" style=" width: auto; overflow: hidden !important;">
+                <div class="carousel-inner carousel-text" style=" width: auto; overflow: hidden !important;">
                     <div class="item active">
-                        <img src="assets/laptop.jpg" class=".img-responsive">
-                         <div class="carousel-caption">
-                            <h3>Crea tu venta</h3>
-                            <p>Genera tu venta de forma fácil y sencilla con BuyJunction. Añade imágenes, descripción, cantidades mínimas, y todos los datos necesarios para los compradores potenciales</p>
+                         <div class="carousel-content">
+
+
+     
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+          
+                            <div class="row">
+                            <div class="col-md-offset-4 col-md-4">
+                            <div class="semitrans">
+                            <p>           
+                            <h1><i>Crea tu venta</i></h1>
+                            <h4>Genera tu venta de forma fácil y sencilla con BuyJunction. Añade imágenes, descripción, cantidades mínimas, y todos los datos necesarios para los compradores potenciales</h4></p>
+                            </div>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p> 
+
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="assets/smartphone.jpg">
-                        <div class="carousel-caption">
-                            <h3>Gestiona tu venta</h3>
-                            <p>Contacta con los compradores, visualiza en tiempo real en qué estado se encuentra tu venta, qué compradores han pagado, quién ha recibido ya su item.. Todo de forma rápida y sencilla con BuyJunction</p>
+                        <div class="carousel-content">
+
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+
+                            <div class="row">
+                            <div class="col-md-offset-4 col-md-4"> 
+                            <div class="semitrans">                           
+                            <h1><i>Gestiona tu venta</i></h1>
+                            <h4>Contacta con los compradores, visualiza en tiempo real en qué estado se encuentra tu venta, qué compradores han pagado, quién ha recibido ya su item.. Todo de forma rápida y sencilla con BuyJunction</h4>
+                            </div>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p> 
+                            </div>
+                            </div>
                         </div>
                     </div>
                     <div class="item">
-                        <img src="assets/containers.jpg">
-                        <div class="carousel-caption">
-                            <h3>Gestiona tus compras</h3>                       
-                            <p>Conoce en todo momento el estado de tu compra, si ya se ha hecho el pedido, si el pago de tu artículo ha sido confirmado o si tu artículo está de camino a tu casa.  </p>
+                        <div class="carousel-content">
+  
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+             
+                            <div class="row">
+                            <div class="col-md-offset-4 col-md-4">
+                            <div class="semitrans"> 
+                            <p>             
+                            <h1><i>Gestiona tus compras</i></h1>                       
+                            <h4>Conoce en todo momento el estado de tu compra, si ya se ha hecho el pedido, si el pago de tu artículo ha sido confirmado o si tu artículo está de camino a tu casa.  </h4></p>
+                            </div>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p>
+                            <p>&nbsp</p> 
+                            </div>
+                            </div>
                         </div>
                      </div>
                 </div>
             </div>
         </center>
+    </div>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script>$('.carousel').carousel();</script>
 <% end %>
